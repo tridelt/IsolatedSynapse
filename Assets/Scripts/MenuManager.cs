@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        startButton.Select(); //AutoSelects the start button to enable navigation with the controller
+        //startButton.Select(); //AutoSelects the start button to enable navigation with the controller
     }
 
     // Update is called once per frame
