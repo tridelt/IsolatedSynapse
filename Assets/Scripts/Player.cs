@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("hola!");
+        // Debug.Log("hola!");
 
         rb2d = GetComponent<Rigidbody2D>();
     }
