@@ -146,7 +146,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_2
+      name: Selene_dodge_north_0
       rect:
         serializedVersion: 2
         x: 145
@@ -167,7 +167,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_3
+      name: Selene_dodge_north_1
       rect:
         serializedVersion: 2
         x: 206
@@ -188,7 +188,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_4
+      name: Selene_dodge_north_2
       rect:
         serializedVersion: 2
         x: 265
@@ -209,7 +209,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_5
+      name: Selene_dodge_north_3
       rect:
         serializedVersion: 2
         x: 329
@@ -230,7 +230,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_6
+      name: Selene_dodge_north_4
       rect:
         serializedVersion: 2
         x: 398
@@ -356,7 +356,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_12
+      name: Selene_dodge_west_0
       rect:
         serializedVersion: 2
         x: 146
@@ -377,7 +377,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_13
+      name: Selene_dodge_west_1
       rect:
         serializedVersion: 2
         x: 210
@@ -398,7 +398,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_14
+      name: Selene_dodge_west_2
       rect:
         serializedVersion: 2
         x: 273
@@ -419,7 +419,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_15
+      name: Selene_dodge_west_3
       rect:
         serializedVersion: 2
         x: 337
@@ -440,7 +440,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_16
+      name: Selene_dodge_west_4
       rect:
         serializedVersion: 2
         x: 402
@@ -524,7 +524,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_20
+      name: Selene_dodge_south_0
       rect:
         serializedVersion: 2
         x: 146
@@ -545,7 +545,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_21
+      name: Selene_dodge_south_1
       rect:
         serializedVersion: 2
         x: 206
@@ -566,7 +566,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_22
+      name: Selene_dodge_south_2
       rect:
         serializedVersion: 2
         x: 263
@@ -587,7 +587,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_23
+      name: Selene_dodge_south_3
       rect:
         serializedVersion: 2
         x: 329
@@ -608,7 +608,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_24
+      name: Selene_dodge_south_4
       rect:
         serializedVersion: 2
         x: 399
@@ -671,7 +671,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_27
+      name: Selene_dodge_east_0
       rect:
         serializedVersion: 2
         x: 145
@@ -692,7 +692,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_28
+      name: Selene_dodge_east_1
       rect:
         serializedVersion: 2
         x: 209
@@ -713,7 +713,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_29
+      name: Selene_dodge_east_2
       rect:
         serializedVersion: 2
         x: 269
@@ -734,7 +734,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_30
+      name: Selene_dodge_east_3
       rect:
         serializedVersion: 2
         x: 333
@@ -755,7 +755,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_31
+      name: Selene_dodge_east_4
       rect:
         serializedVersion: 2
         x: 400
@@ -797,7 +797,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_33
+      name: Selene_shield_north_0
       rect:
         serializedVersion: 2
         x: 76
@@ -818,7 +818,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_34
+      name: Selene_shield_north_1
       rect:
         serializedVersion: 2
         x: 144
@@ -839,7 +839,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_35
+      name: Selene_shield_north_2
       rect:
         serializedVersion: 2
         x: 210
@@ -860,7 +860,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_36
+      name: Selene_shield_north_3
       rect:
         serializedVersion: 2
         x: 275
@@ -986,7 +986,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_42
+      name: Selene_shield_west_0
       rect:
         serializedVersion: 2
         x: 146
@@ -1007,7 +1007,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_43
+      name: Selene_shield_west_1
       rect:
         serializedVersion: 2
         x: 210
@@ -1028,7 +1028,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_44
+      name: Selene_shield_west_2
       rect:
         serializedVersion: 2
         x: 271
@@ -1049,7 +1049,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_45
+      name: Selene_shield_west_3
       rect:
         serializedVersion: 2
         x: 332
@@ -1133,7 +1133,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_49
+      name: Selene_shield_south_0
       rect:
         serializedVersion: 2
         x: 82
@@ -1154,7 +1154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_50
+      name: Selene_shield_south_2
       rect:
         serializedVersion: 2
         x: 146
@@ -1175,7 +1175,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_51
+      name: Selene_shield_south_3
       rect:
         serializedVersion: 2
         x: 209
@@ -1196,7 +1196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_52
+      name: Selene_shield_south_1
       rect:
         serializedVersion: 2
         x: 274
@@ -1322,7 +1322,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_58
+      name: Selene_shield_east_0
       rect:
         serializedVersion: 2
         x: 137
@@ -1343,7 +1343,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_59
+      name: Selene_shield_east_1
       rect:
         serializedVersion: 2
         x: 201
@@ -1364,7 +1364,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_60
+      name: Selene_shield_east_2
       rect:
         serializedVersion: 2
         x: 274
@@ -1385,7 +1385,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Selene_61
+      name: Selene_shield_east_3
       rect:
         serializedVersion: 2
         x: 339
@@ -4442,56 +4442,60 @@ TextureImporter:
     nameFileIdTable:
       Selene_119: -1714028225
       Selene_7: -46587969
+      Selene_dodge_south_4: 1026431920
       Selene_62: -692726925
       Selene_10: 1058951967
       Selene_156: -1500359186
       Selene_walk_east_8: 1091796097
       Selene_115: -243703449
       Selene_walk_south_3: -1115992631
-      Selene_52: 1623279253
+      Selene_dodge_east_3: -1657359934
       Selene_157: -390141234
       Selene_attack_north_4: 1435997402
       Selene_180: 163112383
       Selene_37: -1214449732
+      Selene_shield_south_2: 1298746432
       Selene_attack_west_1: -923937276
       Selene_173: -1231884270
-      Selene_6: 1939711261
       Selene_19: 1787986369
-      Selene_13: -493895525
       Selene_47: -1386614741
       Selene_walk_west_1: -1868384122
+      Selene_dodge_west_4: -676501865
       Selene_121: 1128214635
+      Selene_shield_west_2: -652365164
       Selene_walk_south_8: 1506624618
       Selene_107: -40431076
       Selene_108: -1274012490
       Selene_attack_east_0: -503250092
+      Selene_shield_east_3: 1435367902
+      Selene_dodge_south_1: 1751654922
       Selene_103: 1824114102
       Selene_17: 692163875
       Selene_18: -1912183970
       Selene_123: 2118379140
+      Selene_dodge_north_3: 905886967
       Selene_walk_east_3: 1299063241
       Selene_113: -2103670993
       Selene_177: -1459125597
       Selene_164: -2107283597
+      Selene_dodge_north_2: -833188398
       Selene_109: -1935419371
-      Selene_24: 1026431920
       Selene_136: 444342663
       Selene_138: -385180608
       Selene_174: -1705501410
       Selene_132: -2107520923
       Selene_54: 868810112
+      Selene_shield_south_0: -1716936200
       Selene_attack_west_2: -1765537616
-      Selene_4: -833188398
-      Selene_61: 1435367902
+      Selene_dodge_east_1: 1585718282
       Selene_125: -2057104852
       Selene_153: -1931740770
       Selene_walk_north_6: -153978158
       Selene_148: 223647941
       Selene_172: -402756622
       Selene_178: 788328478
-      Selene_58: 2002683637
       Selene_attack_north_3: 70112531
-      Selene_29: -2121909484
+      Selene_shield_south_1: 1623279253
       Selene_walk_west_4: 1837920415
       Selene_165: 264549210
       Selene_130: -1168856337
@@ -4503,36 +4507,33 @@ TextureImporter:
       Selene_146: 1754816285
       Selene_167: -905167988
       Selene_walk_north_8: -524828210
-      Selene_2: 86113395
       Selene_140: 1602954452
       Selene_walk_north_5: -1158110429
       Selene_walk_east_0: 1921756043
       Selene_116: -600623738
-      Selene_33: 1186926590
       Selene_walk_east_4: 771044658
-      Selene_51: -1146258214
       Selene_175: -374963835
+      Selene_dodge_east_0: -948088347
       Selene_176: -1764197893
       Selene_100: -1743903806
-      Selene_31: 2132395976
       Selene_41: 1744078363
       Selene_walk_south_4: -458986029
       Selene_155: 1129179285
-      Selene_30: -1657359934
       Selene_159: 2048505176
       Selene_135: 112512
       Selene_179: -161141237
-      Selene_23: 2020250265
-      Selene_43: 1144110426
       Selene_137: -1340503501
       Selene_154: -644578293
-      Selene_59: -2035313491
       Selene_104: -971204486
       Selene_attack_west_0: -288179915
+      Selene_shield_north_3: -921934231
+      Selene_dodge_west_0: 1345762788
       Selene_169: -245494145
-      Selene_34: -1382457908
+      Selene_dodge_north_4: 1939711261
+      Selene_shield_east_1: -2035313491
       Selene_143: -824143788
-      Selene_15: -1052154630
+      Selene_dodge_south_3: 2020250265
+      Selene_shield_north_0: 1186926590
       Selene_attack_east_5: 2101553856
       Selene_walk_north_2: -728297018
       Selene_walk_west_8: 264765010
@@ -4542,49 +4543,47 @@ TextureImporter:
       Selene_8: 409326291
       Selene_168: 2130315936
       Selene_attack_south_5: -2074517950
-      Selene_16: -676501865
       Selene_attack_east_3: 1688894983
-      Selene_20: 2142580541
+      Selene_dodge_east_2: -2121909484
       Selene_145: -1127958126
       Selene_walk_south_5: -1757283829
       Selene_102: 593379978
       Selene_attack_north_1: -1645762619
-      Selene_12: 1345762788
       Selene_122: 812876551
-      Selene_22: -1937007427
       Selene_attack_north_5: 1968867501
       Selene_112: -1912687136
       Selene_48: -270986335
       Selene_walk_north_1: 550356149
       Selene_11: 747939442
       Selene_walk_west_3: 1143919856
-      Selene_50: 1298746432
       Selene_110: -307530466
       Selene_158: 2044648661
+      Selene_shield_east_2: 922904068
       Selene_128: -1218172483
-      Selene_3: 988389706
       Selene_40: -530077439
       Selene_attack_south_0: 79818746
       Selene_walk_east_5: -1282423537
       Selene_walk_west_7: -1849608712
       Selene_walk_south_7: -1266328187
+      Selene_shield_north_1: -1382457908
+      Selene_shield_west_1: 1144110426
       Selene_139: 994235271
       Selene_129: -1036175933
       Selene_attack_east_2: -2125719517
       Selene_attack_south_4: 208035528
       Selene_attack_west_4: 1453130769
       Selene_141: 915730007
-      Selene_134: 692173259
-      Selene_walk_north_7: -500242522
       Selene_walk_north_4: -1029223932
-      Selene_27: -948088347
+      Selene_walk_north_7: -500242522
+      Selene_134: 692173259
       Selene_181: 1775388940
       Selene_106: 74022680
+      Selene_166: -1200357768
       Selene_walk_west_0: -1452038384
       Selene_walk_east_7: 1779870251
       Selene_46: 1916067860
       Selene_attack_south_2: -732993711
-      Selene_166: -1200357768
+      Selene_dodge_north_0: 86113395
       Selene_39: -872874141
       Selene_attack_north_2: -1616916381
       Selene_attack_east_4: 486133794
@@ -4593,22 +4592,24 @@ TextureImporter:
       Selene_walk_south_6: -1984897497
       Selene_101: 874454840
       Selene_attack_south_3: 1995813762
+      Selene_dodge_west_2: -1271937964
       Selene_attack_east_1: 1431226225
+      Selene_dodge_west_3: -1052154630
       Selene_38: -4505026
+      Selene_dodge_north_1: 988389706
       Selene_walk_north_0: -101345362
-      Selene_21: 1751654922
+      Selene_walk_east_2: -1016351732
       Selene_26: 1291020803
+      Selene_dodge_east_4: 2132395976
       Selene_attack_north_0: -1065426055
       Selene_171: 1446365104
-      Selene_60: 922904068
       Selene_105: -1767097668
       Selene_170: 827881490
       Selene_walk_east_6: -1415795204
       Selene_25: -160636186
-      Selene_walk_east_2: -1016351732
+      Selene_dodge_west_1: -493895525
       Selene_111: 1008043139
       Selene_144: -1387269570
-      Selene_14: -1271937964
       Selene_walk_south_1: -1198910519
       Selene_57: 855004806
       Selene_126: 354829885
@@ -4616,35 +4617,34 @@ TextureImporter:
       Selene_118: -1211794289
       Selene_63: -1305929603
       Selene_walk_west_6: -1735276760
-      Selene_35: 486172529
+      Selene_shield_west_3: -1542379781
+      Selene_shield_east_0: 2002683637
       Selene_152: 1264712081
       Selene_150: -2046013264
       Selene_55: -1208454888
-      Selene_49: -1716936200
       Selene_attack_west_5: -1458843341
+      Selene_shield_south_3: -1146258214
       Selene_127: 1953644678
-      Selene_5: 905886967
-      Selene_42: 214780071
       Selene_160: 193198993
-      Selene_walk_north_3: 1248385727
       Selene_120: -999356775
       Selene_walk_west_5: 1444248916
+      Selene_walk_north_3: 1248385727
       Selene_147: -260363223
       Selene_56: -1452022870
       Selene_117: 1221692890
       Selene_162: 253864416
       Selene_149: 51253340
-      Selene_36: -921934231
       Selene_124: -1327480774
       Selene_attack_south_1: -796263035
+      Selene_shield_north_2: 486172529
       Selene_attack_west_3: 1507597232
+      Selene_dodge_south_0: 2142580541
       Selene_151: -1679120944
-      Selene_45: -1542379781
-      Selene_44: -652365164
       Selene_walk_south_2: -2097580178
       Selene_53: -2000628136
-      Selene_28: 1585718282
+      Selene_dodge_south_2: -1937007427
       Selene_161: 393883258
+      Selene_shield_west_0: 214780071
       Selene_131: 1967249315
   spritePackingTag: 
   pSDRemoveMatte: 0
