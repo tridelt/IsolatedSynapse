@@ -9,12 +9,14 @@ public class MenuManager : MonoBehaviour
 {
 
     [SerializeField] Button startButton; //Reference to the start button
+    [SerializeField] private
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        startButton.Select(); //AutoSelects the start button to enable navigation with the controller
+        
+        //startButton.Select(); //AutoSelects the start button to enable navigation with the controller
     }
 
     // Update is called once per frame
