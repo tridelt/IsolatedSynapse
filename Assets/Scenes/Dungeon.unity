@@ -888,17 +888,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 908703021, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
+      propertyPath: attack_range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 908703021, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
+      propertyPath: enemie_layers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2587827860564366496, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2587827860564366496, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.55
+      value: 25.57
       objectReference: {fileID: 0}
     - target: {fileID: 2587827860564366496, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.52
+      value: 25.2
       objectReference: {fileID: 0}
     - target: {fileID: 2587827860564366496, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1009,7 +1017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729650955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.55, y: -2.52, z: -20}
+  m_LocalPosition: {x: 25.57, y: 25.2, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32795,7 +32803,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333797109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.55, y: -2.52, z: -20}
+  m_LocalPosition: {x: 25.57, y: 25.2, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32866,9 +32874,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1083879025}
     - target: {fileID: 16193681203540523, guid: e41fa2d6faad34af397b855305bc12ff, type: 3}
+      propertyPath: max_health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 16193681203540523, guid: e41fa2d6faad34af397b855305bc12ff, type: 3}
       propertyPath: aggroCenter
       value: 
       objectReference: {fileID: 1157553463}
+    - target: {fileID: 16193681203540523, guid: e41fa2d6faad34af397b855305bc12ff, type: 3}
+      propertyPath: current_health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 16193681203540523, guid: e41fa2d6faad34af397b855305bc12ff, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 

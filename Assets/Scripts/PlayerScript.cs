@@ -197,7 +197,8 @@ public class PlayerScript : MonoBehaviour
             Collider2D[] enemies_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, enemie_layers);
             foreach (Collider2D enemy in enemies_hit)
             {
-                Debug.Log("Enemies Damaged");
+                float attackDamage = 30;
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             }
             Invoke(nameof(AttackReset), 0.6f);
         }
