@@ -103,7 +103,8 @@ public class Enemy : MonoBehaviour
         current_health -= attackDamage;
         if (current_health <= 0)
         {
-            Destroy(gameObject);
+            _anim.SetBool("isDead", true);
+            // Destroy(gameObject);
         }
     }
 }
