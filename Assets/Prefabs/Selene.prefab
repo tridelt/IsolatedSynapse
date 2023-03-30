@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 908703021}
   - component: {fileID: 1828946309}
   - component: {fileID: 1284944423}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Selene
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -452,8 +452,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1328911623
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Time: 0.5
   m_Parameters:

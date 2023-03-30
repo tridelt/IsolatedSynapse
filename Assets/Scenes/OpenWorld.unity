@@ -14892,10 +14892,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Selene
       objectReference: {fileID: 0}
-    - target: {fileID: 2587827860564366499, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
 --- !u!1 &973683710
