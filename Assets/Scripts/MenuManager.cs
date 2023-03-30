@@ -27,7 +27,8 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level1 Name"); //Loads the first level (Name has to be passed as a String)
+        Debug.Log("AAAAAAAAAAAA");
+        SceneManager.LoadScene("OpenWorld"); //Loads the first level (Name has to be passed as a String)
     }
 
     public void ExitGame()
