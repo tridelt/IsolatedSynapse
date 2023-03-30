@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     Vector2 movement = new Vector2();
     Rigidbody2D rb2d;
     private BoxCollider2D _box;
-
+    
     void Start()
     {
         // Debug.Log("hola!");
