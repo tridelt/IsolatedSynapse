@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 16193681203540522}
   - component: {fileID: 16193681203540516}
   - component: {fileID: 16193681203540517}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a28dd706d654d96b54881267360edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  current_health: 0
+  max_health: 0
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
