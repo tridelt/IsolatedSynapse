@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+
+
+*/
+
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float current_health;
@@ -19,6 +24,13 @@ public class Enemy : MonoBehaviour
     private bool _hasAggro = false;
     public SpriteRenderer _spriteRenderer;
 
+    // public bool isDead {
+    //     get
+    //     {
+    //         return current_health <= 0;
+    //         
+    //     }
+    // }
 
     public Transform aggroCenter;
 
@@ -103,8 +115,15 @@ public class Enemy : MonoBehaviour
         current_health -= attackDamage;
         if (current_health <= 0)
         {
-            _anim.SetBool("isDead", true);
+            transform.position = transform.position;
+            Invoke(nameof(EnemyDies), 5f);
             // Destroy(gameObject);
         }
+    }
+
+    private void EnemyDies()
+    {
+        _anim.SetBool("isDead", true);
+        Destroy(gameObject, 1f);
     }
 }
