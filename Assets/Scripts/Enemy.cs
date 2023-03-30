@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+
+
+*/
+
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float current_health;
+
+    [SerializeField] float max_health;
     public Transform[] patrolPoints;
     public Transform player;
     public float moveSpeed;
@@ -16,6 +24,13 @@ public class Enemy : MonoBehaviour
     private bool _hasAggro = false;
     public SpriteRenderer _spriteRenderer;
 
+    // public bool isDead {
+    //     get
+    //     {
+    //         return current_health <= 0;
+    //         
+    //     }
+    // }
 
     public Transform aggroCenter;
 
@@ -28,7 +43,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        _anim= GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
         _previousPosition = transform.position;
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -38,7 +53,7 @@ public class Enemy : MonoBehaviour
     {
         // Debug.Log(transform.position.y - player.position.y);
 
-        
+
         if (transform.position.y < player.position.y)
         {
             // Debug.Log(transform.position.y);
@@ -50,7 +65,7 @@ public class Enemy : MonoBehaviour
         {
             _spriteRenderer.sortingOrder = 0;
         }
-        
+
         if (Vector2.Distance(player.position, aggroCenter.position) < 5f)
         {
             _hasAggro = true;
@@ -93,5 +108,22 @@ public class Enemy : MonoBehaviour
             transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, 1f);
             _isFacingRight = false;
         }
+    }
+
+    public void TakeDamage(float attackDamage)
+    {
+        current_health -= attackDamage;
+        if (current_health <= 0)
+        {
+            transform.position = transform.position;
+            Invoke(nameof(EnemyDies), 5f);
+            // Destroy(gameObject);
+        }
+    }
+
+    private void EnemyDies()
+    {
+        _anim.SetBool("isDead", true);
+        Destroy(gameObject, 1f);
     }
 }
