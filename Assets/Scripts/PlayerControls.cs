@@ -62,6 +62,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Gadget"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9bd47ac-a067-4968-9fd2-13867f57ebfe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -260,6 +269,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d2dca46-43d0-43c7-bacd-4210a2ddf8d7"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gadget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efac4e08-6417-4cc2-ad59-089d08fa2b00"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gadget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -790,6 +821,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_MeleeAttack = m_Player.FindAction("Melee Attack", throwIfNotFound: true);
         m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
+        m_Player_Gadget = m_Player.FindAction("Gadget", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -865,6 +897,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MeleeAttack;
     private readonly InputAction m_Player_Shield;
     private readonly InputAction m_Player_Dodge;
+    private readonly InputAction m_Player_Gadget;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -873,6 +906,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @MeleeAttack => m_Wrapper.m_Player_MeleeAttack;
         public InputAction @Shield => m_Wrapper.m_Player_Shield;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
+        public InputAction @Gadget => m_Wrapper.m_Player_Gadget;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -894,6 +928,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Dodge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
                 @Dodge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
                 @Dodge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @Gadget.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGadget;
+                @Gadget.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGadget;
+                @Gadget.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGadget;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -910,6 +947,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Dodge.started += instance.OnDodge;
                 @Dodge.performed += instance.OnDodge;
                 @Dodge.canceled += instance.OnDodge;
+                @Gadget.started += instance.OnGadget;
+                @Gadget.performed += instance.OnGadget;
+                @Gadget.canceled += instance.OnGadget;
             }
         }
     }
@@ -1025,6 +1065,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMeleeAttack(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnGadget(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
