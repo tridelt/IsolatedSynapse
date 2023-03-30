@@ -1060,7 +1060,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 5, y: -8}
+        - {x: 1, y: -5}
+        - {x: -4, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: 7d5d7dfe585d141a2b760409df1289e8
@@ -1081,7 +1084,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 0, y: -6}
+        - {x: -7, y: -10}
+        - {x: 7, y: -10}
       tessellationDetail: 0
       bones: []
       spriteID: 30220a5ec50d243b1a632d91108e31b3
@@ -1102,7 +1108,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 15, y: -8}
+        - {x: 16, y: -9}
+        - {x: 16, y: -3}
       tessellationDetail: 0
       bones: []
       spriteID: 0fc2eb1ba473b44e0bb37672638e435c
@@ -1123,7 +1132,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 12, y: -11}
+        - {x: -2, y: -9}
+        - {x: -10, y: -11}
       tessellationDetail: 0
       bones: []
       spriteID: eb28e7e576dd446b0a4ff3acb602891a
@@ -1144,7 +1156,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 7, y: 7}
+        - {x: 6, y: 0}
+        - {x: 6, y: -9}
+        - {x: 12, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 15}
+        - {x: 13, y: 14}
+      - - {x: -16, y: -10}
+        - {x: -15, y: -8}
+        - {x: -16, y: -6}
       tessellationDetail: 0
       bones: []
       spriteID: 3beb73ca6f0234b07a1800284dc2ce7d
@@ -1678,6 +1700,102 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TX Plant_75
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee06f852c5b1742dfa88ca6af9bd1238
+      internalID: 1658121878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_one
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 352
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -6, y: -38}
+        - {x: -7, y: -69}
+        - {x: 4, y: -75}
+        - {x: 6, y: -38}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e69892f7b798452b8d31320edef7bc7
+      internalID: -810334111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_two
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 352
+        width: 96
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -33}
+        - {x: -4, y: -75}
+        - {x: 4, y: -76}
+        - {x: 7, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9c5fa77e8b0e468b8f46e9d16ebdea2
+      internalID: 912923873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_three
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 352
+        width: 96
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -7, y: -23}
+        - {x: -5, y: -69}
+        - {x: 3, y: -70}
+        - {x: 6, y: -17}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 123115a13b4034670a7eecd2d6498df2
+      internalID: -1505318653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1703,15 +1821,18 @@ TextureImporter:
       TX Plant_12: 13139760
       TX Plant_29: -630676047
       TX Plant_42: -228734452
+      tree_two: 912923873
       TX Plant_26: -218175087
       TX Plant_24: -254037857
       TX Plant_71: -2115378615
       TX Plant_74: -1291556002
       TX Plant_41: -770716592
+      tree_one: -810334111
       TX Plant_33: -1420302740
       TX Plant_56: 50681059
       TX Plant_66: 357094247
       TX Plant_20: -1026989186
+      tree_three: -1505318653
       TX Plant_9: 1050650379
       TX Plant_62: 281414570
       TX Plant_39: 435463514
@@ -1762,6 +1883,7 @@ TextureImporter:
       TX Plant_28: 1712726231
       TX Plant_3: -1298007064
       TX Plant_45: -1285826391
+      TX Plant_75: 1658121878
       TX Plant_21: 1007536401
       TX Plant_50: -1414331718
   spritePackingTag: 
