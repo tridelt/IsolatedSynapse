@@ -55,8 +55,15 @@ public class PlayerScript : MonoBehaviour
         East = 3
     }
 
+    enum CurrentGadget
+    {
+        Hook = 0,
+        Blaster = 1
+    }
+
     PlayerStates player_state; // The current player state
     PlayerDirections player_direction; // The current direction the player is facing
+    CurrentGadget current_gadget;
 
     private void Awake()
     {
@@ -73,6 +80,9 @@ public class PlayerScript : MonoBehaviour
         // Initial state and direction of the player
         player_state = PlayerStates.Idle;
         player_direction = PlayerDirections.South;
+
+        //For the moment being we only have the hook, so we set it as default here
+        current_gadget = CurrentGadget.Hook;
     }
 
 
