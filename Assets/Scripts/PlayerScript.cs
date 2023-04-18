@@ -28,6 +28,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float attack_range;
 
     [SerializeField] LayerMask enemie_layers;
+    [SerializeField] LayerMask blockade_layer;
 
     PlayerControls PlayerInput; // Input System for the player controls 
 
@@ -199,6 +200,13 @@ public class PlayerScript : MonoBehaviour
             {
                 float attackDamage = 30;
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            }
+            
+            Collider2D[] blockades_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, blockade_layer);
+            foreach (Collider2D blockade in blockades_hit)
+            {
+                Debug.Log("1111blockate hit");
+                blockade.GetComponent<Blockade>().TakeDamage();
             }
             Invoke(nameof(AttackReset), 0.6f);
         }
