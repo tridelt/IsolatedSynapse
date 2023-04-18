@@ -42,6 +42,7 @@ public class Blockade : MonoBehaviour
         if (!isAlive)
         {
             Debug.Log("it is now dead");
+            _anim.SetBool("destroyed", true);
             Invoke(nameof(EnemyDies), 0f);
         }
     }
