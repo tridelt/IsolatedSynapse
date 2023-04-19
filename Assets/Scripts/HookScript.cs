@@ -47,7 +47,7 @@ public class HookScript : MonoBehaviour
                 }
             }
 
-            transform.Translate(Vector2.forward * speed * Time.deltaTime);
+            //transform.Translate(Vector2.forward * speed * Time.deltaTime);
             if (collidedWith) { collidedWith.transform.position = transform.position; }
         }
         else { Destroy(gameObject); }

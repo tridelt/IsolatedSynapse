@@ -29,6 +29,8 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] LayerMask enemie_layers;
 
+    [SerializeField] float damage_taken_shielded;
+
     PlayerControls PlayerInput; // Input System for the player controls 
 
     Vector2 movement; // Direction of the player movement
@@ -273,6 +275,10 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if(player_state == PlayerStates.Shielded)
+        {
+            damage *= damage_taken_shielded;
+        }
         current_health -= damage;
     }
 
