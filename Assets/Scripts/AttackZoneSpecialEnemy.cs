@@ -13,7 +13,7 @@ public class AttackZoneSpecialEnemy : MonoBehaviour
     {
         if (inner && collision.tag == "Player")
         {
-            parent.GetComponent<SpecialEnemy>().PlayerEntered();
+            parent.GetComponent<SpecialEnemy>().PlayerEntered(collision.gameObject);
         }
     }
 

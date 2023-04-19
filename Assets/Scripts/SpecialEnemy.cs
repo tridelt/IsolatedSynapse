@@ -14,9 +14,11 @@ public class SpecialEnemy : MonoBehaviour
 
     [SerializeField] Transform player;
 
-    float current_heatlh, max_health;
+    float current_heatlh;
+    [SerializeField] float max_health;
 
-    bool weakened;
+    bool weakened, dead;
+
 
     Animator anim;
 
@@ -32,7 +34,8 @@ public class SpecialEnemy : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         weakened = false;
-        //StartCoroutine(BaseAttack());
+        dead = false;
+        current_heatlh = max_health;
     }
 
     private void Awake()
@@ -52,19 +55,35 @@ public class SpecialEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(current_heatlh <= 0 && !dead)
+        {
+            dead = true;
+            anim.SetTrigger("Death");
+            Invoke(nameof(Disable), 2.25f);
+        }
+
+
         if (Input.GetKeyDown(KeyCode.K))
         {
-            PlayerEntered();
+            PlayerEntered(player.gameObject);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             Weakened();
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            PlayerExited();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            TakeDamage(100);
+        }
     }
 
     private void Attack()
     {
-        if(state == EnemyStates.Attacking)
+        if(state == EnemyStates.Attacking && !dead)
         {
             if (weakened)
             {
@@ -75,7 +94,7 @@ public class SpecialEnemy : MonoBehaviour
                 StartCoroutine(BaseAttack());
             }
 
-            Invoke(nameof(Attack), 10f);
+            Invoke(nameof(Attack), 12f);
         }
     }
 
@@ -88,7 +107,7 @@ public class SpecialEnemy : MonoBehaviour
         GameObject projectile2;
         GameObject projectile3;
         GameObject projectile4;
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < 25 && !(dead || weakened); i++)
         {
 
             projectile = SpawnAmmo(transform.position);
@@ -152,8 +171,9 @@ public class SpecialEnemy : MonoBehaviour
         ammoPool = null;
     }
 
-    public void PlayerEntered()
+    public void PlayerEntered(GameObject playerEnter)
     {
+        player = playerEnter.transform;
         state = EnemyStates.Attacking;
         Attack();
     }
@@ -165,6 +185,18 @@ public class SpecialEnemy : MonoBehaviour
 
     public static float AngleV2(Vector2 vector2)
     {
-        return 360 - (Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg * Mathf.Sign(vector2.x));
+        if (vector2.x < 0)
+        {
+            return 360 - (Mathf.Atan2(-vector2.x, vector2.y) * Mathf.Rad2Deg * -1);
+        }
+        else
+        {
+            return Mathf.Atan2(-vector2.x, vector2.y) * Mathf.Rad2Deg;
+        }
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
     }
 }

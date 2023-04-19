@@ -65,6 +65,8 @@ public class ProjectileScript : MonoBehaviour
 
     public void ChangeRotation(float newRotation)
     {
+        CancelInvoke();
+        Invoke(nameof(Disable), disableTime);
         rotation = newRotation;
         transform.rotation = Quaternion.Euler(0,0,rotation);
     }
@@ -79,8 +81,10 @@ public class ProjectileScript : MonoBehaviour
         {
             collision.GetComponent<PlayerScript>().TakeDamage(damage);
         }
-
-        Disable();
+        else if(collision.tag == "Enemy" && collision.tag == "Projectile")
+        {
+            Disable();
+        }
     }
 
     private void Disable()
@@ -90,7 +94,6 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke(nameof(Disable), disableTime);
         parried = false;
     }
 
