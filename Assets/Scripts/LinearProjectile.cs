@@ -34,5 +34,9 @@ public class LinearProjectile : MonoBehaviour
             hitPlayer = true;
             Destroy(gameObject);
         }
+        else if (other.CompareTag("Column"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

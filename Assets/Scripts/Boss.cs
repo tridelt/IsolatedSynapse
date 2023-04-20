@@ -35,7 +35,7 @@ public class Boss : MonoBehaviour
             return;
         }
 
-        if (Vector2.Distance(transform.position, player_pos.position) > 8)
+        if (Vector2.Distance(transform.position, player_pos.position) > 6)
         {
             anim.SetBool("isWalking", true);
 
@@ -84,7 +84,6 @@ public class Boss : MonoBehaviour
         {
             isDead = true;
             anim.SetBool("isDead", true);
-            Destroy(gameObject, 1.5f);
         }
         else
         {

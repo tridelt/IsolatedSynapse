@@ -47,5 +47,9 @@ public class DirectionProjectile : MonoBehaviour
             hitPlayer = true;
             Destroy(gameObject);
         }
+        else if (other.CompareTag("Column"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

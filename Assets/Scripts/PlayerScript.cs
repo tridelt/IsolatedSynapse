@@ -211,14 +211,7 @@ public class PlayerScript : MonoBehaviour
             foreach (Collider2D enemy in enemies_hit)
             {
                 float attackDamage = 30;
-                if (enemy?.GetComponent<Enemy>())
-                {
-                    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-                }
-                else
-                {
-                    enemy.GetComponent<Boss>().TakeDamage(attackDamage);
-                }
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             }
             Invoke(nameof(AttackReset), 0.6f);
         }
