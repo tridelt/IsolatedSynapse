@@ -11,7 +11,7 @@ public class Rune : MonoBehaviour
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
 
     public bool runeIsActive = false; // Initial state of the object
-    private int currentPosition;
+    public int currentPosition;
     public int triggerPosition = 90;
 
     void Start()
