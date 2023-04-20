@@ -39,6 +39,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     LayerMask enemie_layers;
 
+    [SerializeField] float damage_taken_shielded;
+
+    PlayerControls PlayerInput; // Input System for the player controls 
     PlayerControls PlayerInput; // Input System for the player controls
 
     Vector2 movement; // Direction of the player movement
@@ -65,8 +68,15 @@ public class PlayerScript : MonoBehaviour
         East = 3
     }
 
+    enum CurrentGadget
+    {
+        Hook = 0,
+        Blaster = 1
+    }
+
     PlayerStates player_state; // The current player state
     PlayerDirections player_direction; // The current direction the player is facing
+    CurrentGadget current_gadget;
 
     private void Awake()
     {
@@ -82,6 +92,9 @@ public class PlayerScript : MonoBehaviour
         // Initial state and direction of the player
         player_state = PlayerStates.Idle;
         player_direction = PlayerDirections.South;
+
+        //For the moment being we only have the hook, so we set it as default here
+        current_gadget = CurrentGadget.Hook;
     }
 
     // Start is called before the first frame update
@@ -281,6 +294,10 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if(player_state == PlayerStates.Shielded)
+        {
+            damage *= damage_taken_shielded;
+        }
         current_health -= damage;
     }
 }
