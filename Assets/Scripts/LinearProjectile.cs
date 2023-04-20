@@ -19,13 +19,11 @@ public class LinearProjectile : MonoBehaviour
     {
         if (!hitPlayer)
         {
-            transform.position = Vector3.MoveTowards(
+            transform.position = Vector2.MoveTowards(
                 transform.position,
                 player_pos.position,
                 speed * Time.deltaTime
             );
-
-            Console.WriteLine(player_pos.position);
         }
     }
 
