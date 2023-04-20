@@ -8,6 +8,7 @@ public class Trap : MonoBehaviour
     AudioSource audio;
     public Transform blockade_east;
     public Transform blockade_south;
+    private bool _hasAlreadyTriggered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,12 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (_hasAlreadyTriggered)
+        {
+            return;
+        }
+
+        _hasAlreadyTriggered = true;
         blockade_east.gameObject.SetActive(true);
         blockade_south.gameObject.SetActive(true);
         audio.clip = trap;
