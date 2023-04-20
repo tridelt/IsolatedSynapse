@@ -8,10 +8,9 @@ public class Rune : MonoBehaviour
     public SpriteRenderer _spriteRenderer;
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
 
-    private bool runeIsActive = false; // Initial state of the object
+    public bool runeIsActive = false; // Initial state of the object
     private int currentPosition;
     public int triggerPosition = 90;
-    public string runeName;
 
     void Start()
     {
