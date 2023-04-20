@@ -2329,6 +2329,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: rune_wheel
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 160
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53860c88b687b477a998a33744f782c9
+      internalID: -286238932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2363,10 +2384,9 @@ TextureImporter:
       TX Furniture_93: 2066380283
       TX Furniture_47: -2015961860
       TX Furniture_78: -2089262417
-      TX Furniture_96: -487040723
+      TX Furniture_14: 1574539510
       TX Furniture_102: -1245144160
       TX Furniture_29: 1443397166
-      TX Furniture_14: 1574539510
       TX Furniture_85: -1019748891
       TX Furniture_30: -1873772538
       TX Furniture_3: -374253398
@@ -2374,6 +2394,7 @@ TextureImporter:
       TX Furniture_26: -1723711690
       TX Furniture_65: 2072899815
       TX Furniture_13: 181896993
+      TX Furniture_96: -487040723
       TX Furniture_9: -2055497060
       TX Furniture_71: -431964676
       TX Furniture_32: -305360848
@@ -2420,6 +2441,7 @@ TextureImporter:
       TX Furniture_70: -245453357
       TX Furniture_97: 579330623
       TX Furniture_1: 1643257443
+      rune_wheel: -286238932
       TX Furniture_36: -1804446282
       TX Furniture_99: -888536825
       TX Furniture_28: 1055389060
