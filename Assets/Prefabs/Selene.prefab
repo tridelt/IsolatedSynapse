@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_health: 0
   max_health: 0
-  speed: 2
+  speed: 4
   dodge_force: 12
   dodge_duration: 0.1
   dodge_cooldown: 0.75
@@ -409,10 +409,10 @@ MonoBehaviour:
   - {fileID: 1337794705}
   - {fileID: 1495355252}
   - {fileID: 1324869723}
-  attack_range: 0.3
+  attack_range: 0.75
   enemie_layers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!96 &1828946309
 TrailRenderer:
   serializedVersion: 2
@@ -534,7 +534,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.031074524, y: 0.081067085}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -545,7 +545,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41, y: 0.49003989}
+  m_Size: {x: 0.40730286, y: 0.652174}
   m_EdgeRadius: 0
 --- !u!1 &7568437077711945090
 GameObject:

@@ -5,33 +5,44 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField]
+    float current_health;
 
-    [SerializeField] float current_health;
-
-    [SerializeField] float max_health;
+    [SerializeField]
+    float max_health;
 
     [Header("Movement")]
-    [SerializeField] float speed; // Movement speed for Selene
+    [SerializeField]
+    float speed; // Movement speed for Selene
 
-    [SerializeField] float dodge_force; // Dodge force for Selene
+    [SerializeField]
+    float dodge_force; // Dodge force for Selene
 
-    [SerializeField] float dodge_duration; // Dodge duration for Selene
+    [SerializeField]
+    float dodge_duration; // Dodge duration for Selene
 
-    [SerializeField] float dodge_cooldown; // Dodge force for Selene
+    [SerializeField]
+    float dodge_cooldown; // Dodge force for Selene
 
-    [SerializeField] Rigidbody2D rb; // Selene's Rigidbody2D component
+    [SerializeField]
+    Rigidbody2D rb; // Selene's Rigidbody2D component
 
-    [SerializeField] Animator animator; // Selene's animator
+    [SerializeField]
+    Animator animator; // Selene's animator
 
-    [SerializeField] Transform[] attack_points;
+    [SerializeField]
+    Transform[] attack_points;
 
-    [SerializeField] float attack_range;
+    [SerializeField]
+    float attack_range;
 
-    [SerializeField] LayerMask enemie_layers;
+    [SerializeField]
+    LayerMask enemie_layers;
 
     [SerializeField] float damage_taken_shielded;
 
     PlayerControls PlayerInput; // Input System for the player controls 
+    PlayerControls PlayerInput; // Input System for the player controls
 
     Vector2 movement; // Direction of the player movement
 
@@ -39,7 +50,7 @@ public class PlayerScript : MonoBehaviour
     bool shielded;
     bool dodge_ready;
 
-    enum PlayerStates   // Enum of the posible states of the player
+    enum PlayerStates // Enum of the posible states of the player
     {
         Idle = 0,
         Moving = 1,
@@ -78,7 +89,6 @@ public class PlayerScript : MonoBehaviour
         PlayerInput.Player.Shield.canceled += Unshield;
         PlayerInput.Player.Dodge.performed += Dodge;
 
-
         // Initial state and direction of the player
         player_state = PlayerStates.Idle;
         player_direction = PlayerDirections.South;
@@ -86,7 +96,6 @@ public class PlayerScript : MonoBehaviour
         //For the moment being we only have the hook, so we set it as default here
         current_gadget = CurrentGadget.Hook;
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -99,23 +108,25 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player_state != PlayerStates.Attacking &&
-            player_state != PlayerStates.Parrying &&
-            player_state != PlayerStates.Shielded &&
-            player_state != PlayerStates.Dodging)
+        if (
+            player_state != PlayerStates.Attacking
+            && player_state != PlayerStates.Parrying
+            && player_state != PlayerStates.Shielded
+            && player_state != PlayerStates.Dodging
+        )
         {
-
             // Input
             movement = PlayerInput.Player.Move.ReadValue<Vector2>();
 
-            if (movement != Vector2.zero) player_state = PlayerStates.Moving;
-            else player_state = PlayerStates.Idle;
+            if (movement != Vector2.zero)
+                player_state = PlayerStates.Moving;
+            else
+                player_state = PlayerStates.Idle;
 
             // Animations
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
             animator.SetFloat("Speed", movement.sqrMagnitude);
-
         }
 
         //// Input
@@ -144,11 +155,11 @@ public class PlayerScript : MonoBehaviour
 
     private void UpdatePlayerDirection()
     {
-        if(movement.x > 0.01)
+        if (movement.x > 0.01)
         {
-            if(movement.y > 0.01)
+            if (movement.y > 0.01)
             {
-                if(movement.x > movement.y)
+                if (movement.x > movement.y)
                 {
                     player_direction = PlayerDirections.East;
                 }
@@ -169,7 +180,7 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
-        else if(movement.x < -0.01)
+        else if (movement.x < -0.01)
         {
             if (movement.y > 0.01)
             {
@@ -195,8 +206,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-
-        animator.SetFloat("Direction", (float) player_direction);
+        animator.SetFloat("Direction", (float)player_direction);
     }
 
     void Attack(InputAction.CallbackContext context)
@@ -206,7 +216,11 @@ public class PlayerScript : MonoBehaviour
             attack_ready = false;
             player_state = PlayerStates.Attacking;
             animator.SetTrigger("Attack");
-            Collider2D[] enemies_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, enemie_layers);
+            Collider2D[] enemies_hit = Physics2D.OverlapCircleAll(
+                attack_points[(int)player_direction].position,
+                attack_range,
+                enemie_layers
+            );
             foreach (Collider2D enemy in enemies_hit)
             {
                 float attackDamage = 30;
@@ -244,7 +258,12 @@ public class PlayerScript : MonoBehaviour
 
     void Dodge(InputAction.CallbackContext context)
     {
-        if (dodge_ready && player_state != PlayerStates.Attacking && player_state != PlayerStates.Parrying && movement != Vector2.zero)
+        if (
+            dodge_ready
+            && player_state != PlayerStates.Attacking
+            && player_state != PlayerStates.Parrying
+            && movement != Vector2.zero
+        )
         {
             dodge_ready = false;
             player_state = PlayerStates.Dodging;
@@ -281,5 +300,4 @@ public class PlayerScript : MonoBehaviour
         }
         current_health -= damage;
     }
-
 }
