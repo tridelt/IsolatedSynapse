@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] GameObject ui_object;
+
     float current_health;
 
+    [Header ("Health")]
     [SerializeField]
     float max_health;
 
@@ -100,6 +102,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        current_health = max_health;
         attack_ready = true;
         dodge_ready = true;
         shielded = false;
@@ -301,6 +304,23 @@ public class PlayerScript : MonoBehaviour
         {
             damage *= damage_taken_shielded;
         }
+        Debug.Log(current_health);
         current_health -= damage;
+        if (current_health < 0) current_health = 0;
+        Debug.Log(current_health);
+        ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
+    }
+
+    public void PorjectileImpacted(GameObject projectile)
+    {
+        if(player_state == PlayerStates.Parrying)
+        {
+            projectile.GetComponent<ProjectileScript>().ProjectileParried((int)player_direction);
+        }
+        else
+        {
+            TakeDamage(projectile.GetComponent<ProjectileScript>().damage);
+            projectile.SetActive(false);
+        }
     }
 }

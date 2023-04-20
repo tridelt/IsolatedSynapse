@@ -69,22 +69,25 @@ public class SpecialEnemy : MonoBehaviour
             Invoke(nameof(Disable), 2.25f);
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            PlayerEntered(player.gameObject);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Weakened();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            PlayerExited();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            TakeDamage(100);
-        }
+        GetComponent<SpriteRenderer>().flipX = player.position.x > transform.position.x;
+
+        //For testing only
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    PlayerEntered(player.gameObject);
+        //}
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    Weakened();
+        //}
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    PlayerExited();
+        //}
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    TakeDamage(100);
+        //}
     }
 
     private void Attack()

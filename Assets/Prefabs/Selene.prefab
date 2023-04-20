@@ -396,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0210cc5fdc840446b7fc2a999682c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_health: 0
-  max_health: 0
+  ui_object: {fileID: 0}
+  max_health: 100
   speed: 4
   dodge_force: 12
   dodge_duration: 0.1
@@ -413,6 +413,7 @@ MonoBehaviour:
   enemie_layers:
     serializedVersion: 2
     m_Bits: 8
+  damage_taken_shielded: 0.75
 --- !u!96 &1828946309
 TrailRenderer:
   serializedVersion: 2
