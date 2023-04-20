@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 239563693917296812}
   - component: {fileID: 972869160026474934}
   m_Layer: 0
-  m_Name: puzzle_blockade
+  m_Name: puzzle_blockade_horizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
