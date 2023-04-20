@@ -9,11 +9,9 @@ public class Player : MonoBehaviour
     Vector2 movement = new Vector2();
     Rigidbody2D rb2d;
     private BoxCollider2D _box;
-    
+
     void Start()
     {
-        // Debug.Log("hola!");
-
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -24,21 +22,6 @@ public class Player : MonoBehaviour
             Debug.Log("Collision occurred! with enemy");
         }
     }
-
-    // private void OnDrawGizmos()
-    // {
-    //     print("Drawing Gizmos!");
-    //     Gizmos.color = Color.blue;
-    //     Gizmos.DrawSphere(Vector3.zero, 1f);
-    //     if (_box != null)
-    //     {
-    //         Gizmos.color = Color.red;
-    //         var (corner1, corner2) = getGroundCheckCorners();
-    //         Debug.Log(corner1);
-    //         Debug.Log(corner2);
-    //         Gizmos.DrawCube((corner1 + corner2 + corner2) * 0.5f, corner2 - corner1);
-    //     }
-    // }
 
     private void Update()
     {

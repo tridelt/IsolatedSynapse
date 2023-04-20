@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
-    [SerializeField] float movementSpeed;
+    [SerializeField]
+    float movementSpeed;
 
-    [SerializeField] float damage;
+    [SerializeField]
+    float damage;
 
-    [SerializeField] float disableTime;
+    [SerializeField]
+    float disableTime;
 
     enum FixedRotations
     {
@@ -42,7 +45,6 @@ public class ProjectileScript : MonoBehaviour
 
     public void ProjectileParried(int playerDirection)
     {
-
         parried = true;
 
         switch (playerDirection)
@@ -59,7 +61,6 @@ public class ProjectileScript : MonoBehaviour
             case 3:
                 ChangeRotation((float)FixedRotations.East);
                 break;
-
         }
     }
 
@@ -68,20 +69,37 @@ public class ProjectileScript : MonoBehaviour
         CancelInvoke();
         Invoke(nameof(Disable), disableTime);
         rotation = newRotation;
-        transform.rotation = Quaternion.Euler(0,0,rotation);
+        transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player" && !parried)
+        if (collision.tag == "Player" && !parried)
         {
             collision.GetComponent<PlayerScript>().TakeDamage(damage);
+            Disable();
         }
-        else if(collision.tag == "Enemy" && parried)
+        else if (collision.tag == "Enemy" && parried)
         {
-            collision.GetComponent<PlayerScript>().TakeDamage(damage);
+            Enemy enemyController = null;
+            SpecialEnemy specialEnemyController = null;
+            Boss bossEnemyController = null;
+
+            if (collision.TryGetComponent(out enemyController))
+            {
+                enemyController.TakeDamage(damage);
+            }
+            if (collision.TryGetComponent<SpecialEnemy>(out specialEnemyController))
+            {
+                specialEnemyController.TakeDamage(damage);
+            }
+            if (collision.TryGetComponent(out bossEnemyController))
+            {
+                bossEnemyController.TakeDamage(damage);
+            }
+            Disable();
         }
-        else if(collision.tag == "Enemy" && collision.tag == "Projectile")
+        else if (collision.tag == "Enemy" && collision.tag == "Projectile")
         {
             Disable();
         }
@@ -96,5 +114,4 @@ public class ProjectileScript : MonoBehaviour
     {
         parried = false;
     }
-
 }

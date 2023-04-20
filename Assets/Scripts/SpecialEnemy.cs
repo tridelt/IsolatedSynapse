@@ -8,17 +8,23 @@ public class SpecialEnemy : MonoBehaviour
     static List<GameObject> ammoPool;
     public int poolSize;
 
-    [SerializeField] float rotationAugment;
+    [SerializeField]
+    float rotationAugment;
 
-    [SerializeField] GameObject attackZoneInner, attackZoneOuter;
+    [SerializeField]
+    GameObject attackZoneInner,
+        attackZoneOuter;
 
-    [SerializeField] Transform player;
+    [SerializeField]
+    Transform player;
 
     float current_heatlh;
-    [SerializeField] float max_health;
 
-    bool weakened, dead;
+    [SerializeField]
+    float max_health;
 
+    bool weakened,
+        dead;
 
     Animator anim;
 
@@ -29,6 +35,7 @@ public class SpecialEnemy : MonoBehaviour
     }
 
     EnemyStates state;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,13 +62,12 @@ public class SpecialEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(current_heatlh <= 0 && !dead)
+        if (current_heatlh <= 0 && !dead)
         {
             dead = true;
             anim.SetTrigger("Death");
             Invoke(nameof(Disable), 2.25f);
         }
-
 
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -83,7 +89,7 @@ public class SpecialEnemy : MonoBehaviour
 
     private void Attack()
     {
-        if(state == EnemyStates.Attacking && !dead)
+        if (state == EnemyStates.Attacking && !dead)
         {
             if (weakened)
             {
@@ -109,7 +115,6 @@ public class SpecialEnemy : MonoBehaviour
         GameObject projectile4;
         for (int i = 0; i < 25 && !(dead || weakened); i++)
         {
-
             projectile = SpawnAmmo(transform.position);
             projectile.GetComponent<ProjectileScript>().ChangeRotation(rotation);
 
@@ -123,7 +128,6 @@ public class SpecialEnemy : MonoBehaviour
             projectile4.GetComponent<ProjectileScript>().ChangeRotation(-250 + rotation);
 
             rotation += rotationAugment * Time.deltaTime;
-            Debug.Log(i);
 
             yield return new WaitForSeconds(0.2f);
         }
@@ -138,7 +142,6 @@ public class SpecialEnemy : MonoBehaviour
         GameObject projectile = SpawnAmmo(transform.position);
         projectile.GetComponent<ProjectileScript>().ChangeRotation(rotation);
     }
-
 
     public void Weakened()
     {

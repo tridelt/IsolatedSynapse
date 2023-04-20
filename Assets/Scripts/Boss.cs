@@ -80,6 +80,7 @@ public class Boss : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+
         if (health <= 0 && !isDead)
         {
             isDead = true;

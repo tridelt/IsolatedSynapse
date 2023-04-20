@@ -39,9 +39,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     LayerMask enemie_layers;
 
-    [SerializeField] float damage_taken_shielded;
+    [SerializeField]
+    float damage_taken_shielded;
 
-    PlayerControls PlayerInput; // Input System for the player controls 
     PlayerControls PlayerInput; // Input System for the player controls
 
     Vector2 movement; // Direction of the player movement
@@ -129,18 +129,6 @@ public class PlayerScript : MonoBehaviour
             animator.SetFloat("Speed", movement.sqrMagnitude);
         }
 
-        //// Input
-        //movement = PlayerInput.Player.Move.ReadValue<Vector2>();
-
-        //if (movement != Vector2.zero) player_state = PlayerStates.Moving;
-        //else player_state = PlayerStates.Idle;
-
-        //// Animations
-        //animator.SetFloat("Horizontal", movement.x);
-        //animator.SetFloat("Vertical", movement.y);
-        //animator.SetFloat("Speed", movement.sqrMagnitude);
-
-
         UpdatePlayerDirection();
     }
 
@@ -224,7 +212,22 @@ public class PlayerScript : MonoBehaviour
             foreach (Collider2D enemy in enemies_hit)
             {
                 float attackDamage = 30;
-                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                Enemy enemyController = null;
+                SpecialEnemy specialEnemyController = null;
+                Boss bossEnemyController = null;
+
+                if (enemy.TryGetComponent(out enemyController))
+                {
+                    enemyController.TakeDamage(attackDamage);
+                }
+                if (enemy.TryGetComponent<SpecialEnemy>(out specialEnemyController))
+                {
+                    specialEnemyController.TakeDamage(attackDamage);
+                }
+                if (enemy.TryGetComponent(out bossEnemyController))
+                {
+                    bossEnemyController.TakeDamage(attackDamage);
+                }
             }
             Invoke(nameof(AttackReset), 0.6f);
         }
@@ -294,7 +297,7 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if(player_state == PlayerStates.Shielded)
+        if (player_state == PlayerStates.Shielded)
         {
             damage *= damage_taken_shielded;
         }

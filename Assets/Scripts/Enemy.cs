@@ -9,9 +9,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float current_health;
+    [SerializeField]
+    float current_health;
 
-    [SerializeField] float max_health;
+    [SerializeField]
+    float max_health;
     public Transform[] patrolPoints;
     public Transform player;
     public float moveSpeed;
@@ -45,18 +47,12 @@ public class Enemy : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-
     void Update()
     {
-        // Debug.Log(transform.position.y - player.position.y);
-
         if (isAlive)
         {
             if (transform.position.y < player.position.y)
             {
-                // Debug.Log(transform.position.y);
-                // Debug.Log(player.position.y);
-                // Debug.Log(transform.position.y < player.position.y);
                 _spriteRenderer.sortingOrder = 2;
             }
             else
@@ -73,8 +69,11 @@ public class Enemy : MonoBehaviour
             {
                 if (Vector2.Distance(transform.position, player.position) > meleeDistance)
                 {
-                    transform.position =
-                        Vector2.MoveTowards(transform.position, player.position, enemySpeed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(
+                        transform.position,
+                        player.position,
+                        enemySpeed * Time.deltaTime
+                    );
                     _anim.SetBool("inMeleeRange", false);
                 }
                 else
@@ -84,9 +83,15 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                transform.position = Vector2.MoveTowards(transform.position, patrolPoints[patrolDestination].position,
-                    enemySpeed * Time.deltaTime);
-                if (Vector2.Distance(transform.position, patrolPoints[patrolDestination].position) < 0.1f)
+                transform.position = Vector2.MoveTowards(
+                    transform.position,
+                    patrolPoints[patrolDestination].position,
+                    enemySpeed * Time.deltaTime
+                );
+                if (
+                    Vector2.Distance(transform.position, patrolPoints[patrolDestination].position)
+                    < 0.1f
+                )
                 {
                     patrolDestination = (patrolDestination + 1) % patrolPoints.Length;
                 }
@@ -97,13 +102,21 @@ public class Enemy : MonoBehaviour
 
             if (movementDelta.x > 0 && !_isFacingRight)
             {
-                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, 1f);
+                transform.localScale = new Vector3(
+                    -Mathf.Sign(transform.localScale.x),
+                    transform.localScale.y,
+                    1f
+                );
                 _isFacingRight = true;
             }
             // Otherwise if the input is moving the player left and the player is facing right...
             else if (movementDelta.x < 0 && _isFacingRight)
             {
-                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, 1f);
+                transform.localScale = new Vector3(
+                    -Mathf.Sign(transform.localScale.x),
+                    transform.localScale.y,
+                    1f
+                );
                 _isFacingRight = false;
             }
         }
@@ -111,8 +124,9 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float attackDamage)
     {
-        if (!isAlive) return;
-        
+        if (!isAlive)
+            return;
+
         current_health -= attackDamage;
         StartCoroutine(FlashRed());
 
