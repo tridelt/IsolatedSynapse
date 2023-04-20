@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Rune : MonoBehaviour
 {
+    public AudioClip trap;
+    AudioSource audio;
     public SpriteRenderer _spriteRenderer;
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
 
@@ -14,6 +16,7 @@ public class Rune : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         ModifyState();
     }
@@ -36,6 +39,8 @@ public class Rune : MonoBehaviour
 
     private void RotateRune()
     {
+        audio.clip = trap;
+        audio.Play();
         currentPosition = (currentPosition + 90) % 360;
         transform.Rotate(0, 0, 90);
         ModifyState();
