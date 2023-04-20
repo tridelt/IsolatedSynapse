@@ -16,7 +16,7 @@ public class ProjectileScript : MonoBehaviour
     {
         North = 0,
         South = -180,
-        West = -250,
+        West = -270,
         East = -90
     }
 

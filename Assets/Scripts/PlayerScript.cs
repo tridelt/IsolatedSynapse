@@ -50,6 +50,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] 
     LayerMask blockade_layer;
 
+    [SerializeField]
+    GameObject hook;
+
     PlayerControls PlayerInput; // Input System for the player controls
 
     Vector2 movement; // Direction of the player movement
@@ -65,7 +68,8 @@ public class PlayerScript : MonoBehaviour
         Attacking = 2,
         Parrying = 3,
         Shielded = 4,
-        Dodging = 5
+        Dodging = 5,
+        UsingGadget = 6
     }
 
     enum PlayerDirections // Enum of the posible directions the player can face (is used to determine the idle or attack animation to use)
@@ -96,6 +100,7 @@ public class PlayerScript : MonoBehaviour
         PlayerInput.Player.Shield.performed += Shielded;
         PlayerInput.Player.Shield.canceled += Unshield;
         PlayerInput.Player.Dodge.performed += Dodge;
+        PlayerInput.Player.Gadget.performed += Gadget;
 
         // Initial state and direction of the player
         player_state = PlayerStates.Idle;
@@ -122,6 +127,7 @@ public class PlayerScript : MonoBehaviour
             && player_state != PlayerStates.Parrying
             && player_state != PlayerStates.Shielded
             && player_state != PlayerStates.Dodging
+            && player_state != PlayerStates.UsingGadget
         )
         {
             // Input
@@ -310,6 +316,28 @@ public class PlayerScript : MonoBehaviour
     void DodgeReset()
     {
         dodge_ready = true;
+    }
+
+    void Gadget(InputAction.CallbackContext context)
+    {
+        player_state = PlayerStates.UsingGadget;
+        switch (current_gadget)
+        {
+            case CurrentGadget.Hook:
+                Hook();
+                break;
+        }
+    }
+
+    void Hook()
+    {
+        hook.SetActive(true);
+        hook.GetComponent<HookScript>().InitialDirection((int)player_direction);
+    }
+
+    public void HookEnded()
+    {
+        player_state = PlayerStates.Idle;
     }
 
     private void OnDrawGizmosSelected()
