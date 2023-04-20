@@ -28,6 +28,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float attack_range;
 
     [SerializeField] LayerMask enemie_layers;
+    [SerializeField] LayerMask rune_layer;
 
     PlayerControls PlayerInput; // Input System for the player controls 
 
@@ -199,6 +200,13 @@ public class PlayerScript : MonoBehaviour
             {
                 float attackDamage = 30;
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            }
+            
+            Collider2D[] runes_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, rune_layer);
+            foreach (Collider2D rune in runes_hit)
+            {
+                float attackDamage = 30;
+                rune.GetComponent<Rune>().Triggered();
             }
             Invoke(nameof(AttackReset), 0.6f);
         }
