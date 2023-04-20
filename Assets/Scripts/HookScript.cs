@@ -6,71 +6,114 @@ using System.Linq;
 public class HookScript : MonoBehaviour
 {
     public string[] tags;
-    //Force applied to nova bomb upon spawn
+
     public float speed, returnSpeed;
-    public float range, stopRange;
+    public float range;
+
+    float rotation;
+
+    bool returning;
+
+    enum FixedRotations
+    {
+        North = 0,
+        South = -180,
+        West = -270,
+        East = -90
+    }
 
     //Private variables
-    [HideInInspector]
-    public Transform player, collidedWith;
-    private LineRenderer line;
-    private bool hasCollided;
+
+    [SerializeField] Transform player;
+
+    [SerializeField] LineRenderer line;
 
     private void Start()
     {
-        //line = transform.Find("Line").GetComponent<LineRenderer>();
+        returning = false;
     }
 
     private void Update()
     {
-        if (player)
+        line.SetPosition(0, player.position);
+        line.SetPosition(1, transform.position);
+
+        var dist = Vector2.Distance(transform.position, player.position);
+
+        if (returning)
         {
-            line.SetPosition(0, player.position);
-            line.SetPosition(1, transform.position);
-
-            var dist = Vector2.Distance(transform.position, player.position);
-
-            //Check if we have impacted
-            if (hasCollided)
+            transform.position += transform.up * Time.deltaTime * returnSpeed;
+        }
+        else
+        {
+            if (dist > range)
             {
-                transform.LookAt(player);
-                if (dist < stopRange)
-                {
-                    Destroy(gameObject);
-                }
-            }
-            else
-            {
-                if (dist > range)
-                {
-                    Collision(null);
-                }
+                ChangeRotation(rotation + 180);
+                returning = true;
             }
 
-            //transform.Translate(Vector2.forward * speed * Time.deltaTime);
-            if (collidedWith) { collidedWith.transform.position = transform.position; }
-        }
-        else { Destroy(gameObject); }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //Here add as many checks as you want for your nova bomb's collision
-        if (!hasCollided && tags.Contains(other.gameObject.tag))
-        {
-            Collision(other.transform);
+            transform.position += transform.up * Time.deltaTime * speed;
         }
     }
 
-    void Collision(Transform col)
+    private void ChangeRotation(float newRotation)
     {
-        speed = returnSpeed;
-        //Stop movement
-        hasCollided = true;
-        if (col)
+        CancelInvoke();
+        rotation = newRotation;
+        transform.rotation = Quaternion.Euler(0, 0, rotation);
+    }
+
+    public void InitialDirection(int playerDirection)
+    {
+        transform.position = player.position;
+        switch (playerDirection)
         {
-            transform.position = col.position;
-            collidedWith = col;
+            case 0:
+                ChangeRotation((float)FixedRotations.North);
+                break;
+            case 1:
+                ChangeRotation((float)FixedRotations.South);
+                break;
+            case 2:
+                ChangeRotation((float)FixedRotations.West);
+                break;
+            case 3:
+                ChangeRotation((float)FixedRotations.East);
+                break;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Projectile" && !returning)
+        {
+            int direction = 0;
+            switch (rotation)
+            {
+                case 0:
+                    direction = 1;
+                    break;
+                case -90:
+                    direction = 2;
+                    break;
+                case -270:
+                    direction = 3;
+                    break;
+            }
+            collision.GetComponent<ProjectileScript>().ProjectileParried(direction);
+            returning = true;
+            ChangeRotation(rotation + 180);
+        }
+        else if (collision.tag == "Player" && returning)
+        {
+            gameObject.SetActive(false);
+            player.gameObject.GetComponent<PlayerScript>().HookEnded();
+        }
+    }
+
+    private void OnDisable()
+    {
+        returning = false;
+    }
+
 }
