@@ -242,7 +242,6 @@ public class PlayerScript : MonoBehaviour
             Collider2D[] runes_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, rune_layer);
             foreach (Collider2D rune in runes_hit)
             {
-                Debug.Log("some is hit");
                 float attackDamage = 30;
                 rune.GetComponent<Rune>().Triggered();
             }
@@ -250,7 +249,6 @@ public class PlayerScript : MonoBehaviour
             Collider2D[] blockades_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, blockade_layer);
             foreach (Collider2D blockade in blockades_hit)
             {
-                Debug.Log("1111blockate hit");
                 blockade.GetComponent<Blockade>().TakeDamage();
             }
             Invoke(nameof(AttackReset), 0.6f);
@@ -325,10 +323,8 @@ public class PlayerScript : MonoBehaviour
         {
             damage *= damage_taken_shielded;
         }
-        Debug.Log(current_health);
         current_health -= damage;
         if (current_health < 0) current_health = 0;
-        Debug.Log(current_health);
         ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
     }
 
