@@ -9,42 +9,41 @@ public class Rune : MonoBehaviour
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
 
     private bool runeIsActive = false; // Initial state of the object
-    private int currentPosition = 0;
-    public int triggerPosition = 60;
+    private int currentPosition;
+    public int triggerPosition = 90;
     public string runeName;
 
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        ModifyState();
     }
 
     public void ModifyState()
     {
-        onStateChanged.Invoke();
-    }
-
-    private void RotateRune()
-    {
-        currentPosition += 30;
-        transform.Rotate(0, 0, currentPosition);
-
         if (currentPosition == triggerPosition)
         {
             _spriteRenderer.color = Color.green;
             runeIsActive = true;
-            ModifyState();
         }
         else
         {
             _spriteRenderer.color = Color.white;
             runeIsActive = false;
-            ModifyState();
         }
+
+        onStateChanged.Invoke();
+    }
+
+    private void RotateRune()
+    {
+        currentPosition = (currentPosition + 90) % 360;
+        transform.Rotate(0, 0, 90);
+        ModifyState();
     }
 
     public void Triggered()
     {
         RotateRune();
-        // Debug.Log("Triggered");
     }
 }
