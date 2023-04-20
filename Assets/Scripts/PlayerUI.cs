@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject GadgetButton;
 
     [SerializeField] Sprite[] sprites;
+
+    [SerializeField] Slider slider;
 
     PlayerControls PlayerInput;
 
@@ -36,6 +39,11 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateHealth(float health)
+    {
+        slider.value = health;
     }
 
     void PressedAttack(InputAction.CallbackContext context)

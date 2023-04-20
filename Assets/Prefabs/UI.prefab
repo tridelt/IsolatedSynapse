@@ -335,6 +335,7 @@ MonoBehaviour:
   - {fileID: 436220340, guid: 57f8fafd15eda1548be72985e12ac9f9, type: 3}
   - {fileID: -1323609768, guid: 57f8fafd15eda1548be72985e12ac9f9, type: 3}
   - {fileID: -1844439753, guid: 57f8fafd15eda1548be72985e12ac9f9, type: 3}
+  slider: {fileID: 7775133090130129982}
 --- !u!1 &7775133089558497807
 GameObject:
   m_ObjectHideFlags: 0
