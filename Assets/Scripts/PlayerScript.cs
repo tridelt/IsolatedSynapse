@@ -239,6 +239,7 @@ public class PlayerScript : MonoBehaviour
             Collider2D[] runes_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, rune_layer);
             foreach (Collider2D rune in runes_hit)
             {
+                Debug.Log("some is hit");
                 float attackDamage = 30;
                 rune.GetComponent<Rune>().Triggered();
             }
