@@ -22,20 +22,11 @@ public class DirectionProjectile : MonoBehaviour
     {
         if (!hitPlayer)
         {
-            // Convertir el ángulo en radianes
             float angleRad = angle * Mathf.Deg2Rad;
-
-            // Calcular los componentes X e Y del vector de dirección
             float dirX = Mathf.Cos(angleRad) * direction;
             float dirY = Mathf.Sin(angleRad);
-
-            // Crear el vector de dirección
             Vector2 directionVector = new Vector2(dirX, dirY);
-
-            // Multiplicar el vector de dirección por la velocidad de la bala
             Vector2 movement = directionVector * speed;
-
-            // Mover la bala usando el vector de movimiento
             transform.Translate(movement * Time.deltaTime);
         }
     }
@@ -45,6 +36,7 @@ public class DirectionProjectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hitPlayer = true;
+            other.GetComponent<PlayerScript>().TakeDamage(20);
             Destroy(gameObject);
         }
         else if (other.CompareTag("Column"))

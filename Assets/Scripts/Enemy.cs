@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     private bool _isFacingRight = false;
     private bool _hasAggro = false;
     public SpriteRenderer _spriteRenderer;
+    private bool inMeleeRange = false;
 
     public bool isAlive
     {
@@ -32,13 +33,6 @@ public class Enemy : MonoBehaviour
     }
 
     public Transform aggroCenter;
-
-    //  void OnDrawGizmos()
-    //  {
-    //      print("Drawing Gizmos!");
-    //      Gizmos.color = Color.red;
-    //      Gizmos.DrawSphere(middlePatrolPoint, 1f);
-    //  }
 
     void Start()
     {
@@ -74,11 +68,14 @@ public class Enemy : MonoBehaviour
                         player.position,
                         enemySpeed * Time.deltaTime
                     );
+                    inMeleeRange = false;
                     _anim.SetBool("inMeleeRange", false);
                 }
-                else
+                else if (!inMeleeRange)
                 {
+                    inMeleeRange = true;
                     _anim.SetBool("inMeleeRange", true);
+                    StartCoroutine(Attack());
                 }
             }
             else
@@ -154,5 +151,15 @@ public class Enemy : MonoBehaviour
 
         // Change the color of the sprite back to white
         _spriteRenderer.color = Color.white;
+    }
+
+    private IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(1.5f);
+        while (inMeleeRange)
+        {
+            player.gameObject.GetComponent<PlayerScript>().TakeDamage(10f);
+            yield return new WaitForSeconds(1.5f);
+        }
     }
 }

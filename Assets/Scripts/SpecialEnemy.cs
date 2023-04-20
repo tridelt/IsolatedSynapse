@@ -156,6 +156,7 @@ public class SpecialEnemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         current_heatlh -= damage;
+        FlashRed();
     }
 
     private GameObject SpawnAmmo(Vector3 location)
@@ -204,5 +205,20 @@ public class SpecialEnemy : MonoBehaviour
     public void Disable()
     {
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator FlashRed()
+    {
+        yield return new WaitForSeconds(0.1f);
+        SpriteRenderer _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Change the color of the sprite to red
+        _spriteRenderer.color = Color.red;
+
+        // Wait for 0.1 seconds
+        yield return new WaitForSeconds(0.3f);
+
+        // Change the color of the sprite back to white
+        _spriteRenderer.color = Color.white;
     }
 }

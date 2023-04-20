@@ -6,7 +6,9 @@ public class Blockade : MonoBehaviour
 {
     private Animator _anim;
     public SpriteRenderer _spriteRenderer;
-    [SerializeField] float health = 3;
+
+    [SerializeField]
+    float health = 3;
 
     public bool isAlive
     {
@@ -21,9 +23,7 @@ public class Blockade : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    }
+    void Update() { }
 
     private void EnemyDies()
     {
@@ -32,16 +32,14 @@ public class Blockade : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("2322333blockate hit");
-
-        if (!isAlive) return;
+        if (!isAlive)
+            return;
 
         health -= 1;
         StartCoroutine(DamageFlashing());
 
         if (!isAlive)
         {
-            Debug.Log("it is now dead");
             _anim.SetBool("destroyed", true);
             Invoke(nameof(EnemyDies), 0f);
         }
@@ -49,7 +47,6 @@ public class Blockade : MonoBehaviour
 
     private IEnumerator DamageFlashing()
     {
-
         yield return new WaitForSeconds(0.1f);
 
         // Change the color of the sprite to red
@@ -60,7 +57,7 @@ public class Blockade : MonoBehaviour
 
         // Change the color of the sprite back to white
         _spriteRenderer.color = Color.grey;
-        
+
         // Wait for 0.1 seconds
         yield return new WaitForSeconds(0.1f);
 

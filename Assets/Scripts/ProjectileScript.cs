@@ -7,7 +7,8 @@ public class ProjectileScript : MonoBehaviour
     [SerializeField]
     float movementSpeed;
 
-    [SerializeField] public float damage;
+    [SerializeField]
+    public float damage;
 
     [SerializeField]
     float disableTime;
@@ -79,7 +80,6 @@ public class ProjectileScript : MonoBehaviour
         }
         else if (collision.tag == "Enemy" && parried)
         {
-            Debug.Log(damage);
             Enemy enemyController = null;
             SpecialEnemy specialEnemyController = null;
             Boss bossEnemyController = null;
