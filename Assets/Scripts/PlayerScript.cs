@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] GameObject ui_object;
+    [SerializeField]
+    GameObject ui_object;
 
     float current_health;
 
-    [Header ("Health")]
+    [Header("Health")]
     [SerializeField]
     float max_health;
 
@@ -43,11 +44,11 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     float damage_taken_shielded;
-    
-    [SerializeField] 
+
+    [SerializeField]
     LayerMask rune_layer;
-    
-    [SerializeField] 
+
+    [SerializeField]
     LayerMask blockade_layer;
 
     [SerializeField]
@@ -244,15 +245,23 @@ public class PlayerScript : MonoBehaviour
                     bossEnemyController.TakeDamage(attackDamage);
                 }
             }
-            
-            Collider2D[] runes_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, rune_layer);
+
+            Collider2D[] runes_hit = Physics2D.OverlapCircleAll(
+                attack_points[(int)player_direction].position,
+                attack_range,
+                rune_layer
+            );
             foreach (Collider2D rune in runes_hit)
             {
                 float attackDamage = 30;
                 rune.GetComponent<Rune>().Triggered();
             }
-            
-            Collider2D[] blockades_hit = Physics2D.OverlapCircleAll(attack_points[(int)player_direction].position, attack_range, blockade_layer);
+
+            Collider2D[] blockades_hit = Physics2D.OverlapCircleAll(
+                attack_points[(int)player_direction].position,
+                attack_range,
+                blockade_layer
+            );
             foreach (Collider2D blockade in blockades_hit)
             {
                 blockade.GetComponent<Blockade>().TakeDamage();
@@ -352,13 +361,23 @@ public class PlayerScript : MonoBehaviour
             damage *= damage_taken_shielded;
         }
         current_health -= damage;
-        if (current_health < 0) current_health = 0;
+
+        if (current_health == 0)
+        {
+            animator.SetTrigger("Death");
+            Invoke(nameof(HealthMax), 1f);
+        }
+
+        if (current_health < 0)
+        {
+            current_health = 0;
+        }
         ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
     }
 
     public void PorjectileImpacted(GameObject projectile)
     {
-        if(player_state == PlayerStates.Parrying)
+        if (player_state == PlayerStates.Parrying)
         {
             projectile.GetComponent<ProjectileScript>().ProjectileParried((int)player_direction);
         }
@@ -367,5 +386,11 @@ public class PlayerScript : MonoBehaviour
             TakeDamage(projectile.GetComponent<ProjectileScript>().damage);
             projectile.SetActive(false);
         }
+    }
+
+    void HealthMax()
+    {
+        current_health = 100;
+        ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
     }
 }
