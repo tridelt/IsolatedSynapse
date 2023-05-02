@@ -25,12 +25,12 @@ public class Rune : MonoBehaviour
     {
         if (currentPosition == triggerPosition)
         {
-            _spriteRenderer.color = Color.green;
+            // _spriteRenderer.color = Color.green;
             runeIsActive = true;
         }
         else
         {
-            _spriteRenderer.color = Color.white;
+            // _spriteRenderer.color = Color.white;
             runeIsActive = false;
         }
 

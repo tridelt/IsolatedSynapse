@@ -51,6 +51,9 @@ TagManager:
   - name: Objects
     uniqueID: 3039434627
     locked: 0
+  - name: OutdoorPuzzle
+    uniqueID: 2690875169
+    locked: 0
   - name: Characters
     uniqueID: 388737581
     locked: 0
