@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Outdoor : MonoBehaviour
+public class ResetArea : MonoBehaviour
 {
-    SpriteRenderer _spriteRenderer;
+    public UnityEvent onStateChanged; // Event to be triggered when the state is changed
 
     // Start is called before the first frame update
     void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -17,8 +17,8 @@ public class Outdoor : MonoBehaviour
     {
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerExit2D(Collider2D col)
     {
-        _spriteRenderer.color = Color.blue;
+        onStateChanged.Invoke();
     }
 }
