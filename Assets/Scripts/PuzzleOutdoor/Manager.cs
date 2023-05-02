@@ -6,9 +6,12 @@ using UnityEngine.Events;
 
 public class Manager : MonoBehaviour
 {
+    public AudioClip trap;
+    AudioSource audio;
+    public Transform key;
     public bool isBlocked = false;
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
-    public int nCorrectTiles = 3;
+    public int nCorrectTiles;
     public int foundCorrectTiles = 0;
     public bool puzzleSolved = false;
 
@@ -26,11 +29,9 @@ public class Manager : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-    }
 
     private void OnTilesStateChange(Tile tile)
     {
@@ -45,6 +46,9 @@ public class Manager : MonoBehaviour
             if (foundCorrectTiles == nCorrectTiles)
             {
                 puzzleSolved = true;
+                audio.clip = trap;
+                audio.Play();
+                key.gameObject.SetActive(true);
                 onStateChanged.Invoke();
             }
         }
@@ -57,7 +61,6 @@ public class Manager : MonoBehaviour
             isBlocked = false;
             foundCorrectTiles = 0;
             onStateChanged.Invoke();
-            Debug.Log("manager resets tiles");
         }
     }
 }
