@@ -415,6 +415,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   damage_taken_shielded: 0.75
+  rune_layer:
+    serializedVersion: 2
+    m_Bits: 0
+  blockade_layer:
+    serializedVersion: 2
+    m_Bits: 0
   hook: {fileID: 64911171}
 --- !u!96 &1828946309
 TrailRenderer:
