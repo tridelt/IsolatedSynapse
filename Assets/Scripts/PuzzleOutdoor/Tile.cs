@@ -7,9 +7,10 @@ using UnityEngine.Events;
 
 public class Tile : MonoBehaviour
 {
+    private int _globalOrder = 0;
+    public int order;
     private bool _alreadyTriggered = false;
     private bool _isBlocked = false;
-    public bool amIaGoodTile;
     SpriteRenderer _spriteRenderer;
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
 
@@ -18,6 +19,9 @@ public class Tile : MonoBehaviour
     {
         Manager manager = FindObjectsOfType<Manager>()[0];
         manager.onStateChanged.AddListener(() => OnManagerStateChange(manager));
+
+        ResetArea resetArea = FindObjectsOfType<ResetArea>()[0];
+        resetArea.onStateChanged.AddListener(() => OnResetAreaChange());
     }
 
     void Start()
@@ -37,12 +41,16 @@ public class Tile : MonoBehaviour
             return;
         }
 
-        if (amIaGoodTile)
+        Debug.Log(order + "  global: " + _globalOrder);
+
+        if (order == _globalOrder)
         {
+            Debug.Log("correct");
             _spriteRenderer.color = new Color(0.309682f, 0.6415094f, 0.3056248f, 0.5f);
         }
         else
         {
+            Debug.Log("INcorrect");
             _spriteRenderer.color = new Color(0.7075472f, 0.21f, 0.21f, 0.5f);
         }
 
@@ -53,13 +61,14 @@ public class Tile : MonoBehaviour
 
     private void OnManagerStateChange(Manager manager)
     {
-        if (manager.puzzleSolved || manager.isBlocked)
+        _isBlocked = manager.isBlocked;
+        _globalOrder = manager.globalOder;
+    }
+
+    private void OnResetAreaChange()
+    {
+        if (_isBlocked)
         {
-            _isBlocked = true;
-        }
-        else
-        {
-            _isBlocked = false;
             _alreadyTriggered = false;
             _spriteRenderer.color = new Color(0f, 0f, 0f, 0f);
         }
