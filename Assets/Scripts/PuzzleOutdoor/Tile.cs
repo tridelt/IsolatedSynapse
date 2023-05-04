@@ -45,12 +45,10 @@ public class Tile : MonoBehaviour
 
         if (order == _globalOrder)
         {
-            Debug.Log("correct");
             _spriteRenderer.color = new Color(0.309682f, 0.6415094f, 0.3056248f, 0.5f);
         }
         else
         {
-            Debug.Log("INcorrect");
             _spriteRenderer.color = new Color(0.7075472f, 0.21f, 0.21f, 0.5f);
         }
 
