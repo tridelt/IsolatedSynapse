@@ -41,7 +41,6 @@ public class Tile : MonoBehaviour
             return;
         }
 
-        Debug.Log(order + "  global: " + _globalOrder);
 
         if (order == _globalOrder)
         {
