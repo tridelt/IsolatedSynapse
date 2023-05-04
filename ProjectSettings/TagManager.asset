@@ -8,6 +8,8 @@ TagManager:
   - Column
   - Projectile
   - CanBePickedUp
+  - PuzzleBox
+  - BrokenBox
   layers:
   - Default
   - TransparentFX

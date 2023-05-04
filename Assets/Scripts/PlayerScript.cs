@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject ui_object;
+    GameObject ui_object, GameManager;
 
     float current_health;
 
@@ -61,6 +61,8 @@ public class PlayerScript : MonoBehaviour
     bool attack_ready;
     bool shielded;
     bool dodge_ready;
+
+    bool gadget_availabe;
 
     enum PlayerStates // Enum of the posible states of the player
     {
@@ -118,6 +120,10 @@ public class PlayerScript : MonoBehaviour
         attack_ready = true;
         dodge_ready = true;
         shielded = false;
+
+        // For game consistency
+        GameManager.GetComponent<GameManager>().LoadPlayerStatus(out current_health, out gadget_availabe);
+        GameManager.GetComponent<GameManager>().LoadSceneStatus();
     }
 
     // Update is called once per frame
@@ -329,12 +335,16 @@ public class PlayerScript : MonoBehaviour
 
     void Gadget(InputAction.CallbackContext context)
     {
-        player_state = PlayerStates.UsingGadget;
-        switch (current_gadget)
+        gadget_availabe = true; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        if (gadget_availabe)
         {
-            case CurrentGadget.Hook:
-                Hook();
-                break;
+            player_state = PlayerStates.UsingGadget;
+            switch (current_gadget)
+            {
+                case CurrentGadget.Hook:
+                    Hook();
+                    break;
+            }
         }
     }
 
@@ -373,6 +383,8 @@ public class PlayerScript : MonoBehaviour
             current_health = 0;
         }
         ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
+        GameManager.GetComponent<GameManager>().UpdatePlayerStatus(current_health, gadget_availabe);
+
     }
 
     public void PorjectileImpacted(GameObject projectile)
@@ -392,5 +404,6 @@ public class PlayerScript : MonoBehaviour
     {
         current_health = 100;
         ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
+        GameManager.GetComponent<GameManager>().UpdatePlayerStatus(current_health, gadget_availabe);
     }
 }
