@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer _spriteRenderer;
     private bool inMeleeRange = false;
     private Rigidbody2D rb;
+    private Collider2D coll2d;
 
     public bool isAlive
     {
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        coll2d = GetComponent<Collider2D>();
         _anim = GetComponent<Animator>();
         _previousPosition = transform.position;
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -116,6 +118,11 @@ public class Enemy : MonoBehaviour
                 _isFacingRight = false;
             }
         }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            Destroy(coll2d);
+        }
     }
 
     public void TakeDamage(float attackDamage)
@@ -129,7 +136,7 @@ public class Enemy : MonoBehaviour
         if (current_health <= 0)
         {
             _anim.SetBool("isDead", true);
-            Invoke(nameof(EnemyDies), 5f);
+            Invoke(nameof(EnemyDies), 3f);
         }
     }
 
