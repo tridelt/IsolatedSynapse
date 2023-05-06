@@ -9,11 +9,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    float current_health;
+    [SerializeField] float current_health;
 
-    [SerializeField]
-    float max_health;
+    [SerializeField] float max_health;
     public Transform[] patrolPoints;
     public Transform player;
     public float moveSpeed;
@@ -28,7 +26,6 @@ public class Enemy : MonoBehaviour
     private bool inMeleeRange = false;
     private Rigidbody2D rb;
 
-
     public bool isAlive
     {
         get { return current_health > 0; }
@@ -38,22 +35,87 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _previousPosition = transform.position;
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
-        Vector2 movementDirection = Vector2.zero;
-        movementDirection += (Vector2)(player.position - transform.position).normalized;
-        rb.velocity = movementDirection.normalized * moveSpeed;
-        // rb.velocity = movementDirection.normalized * Vector2.MoveTowards(
-        //     transform.position,
-        //     player.position,
-        //     enemySpeed * Time.deltaTime
-        // );
+        if (isAlive)
+        {
+            if (transform.position.y < player.position.y)
+            {
+                _spriteRenderer.sortingOrder = 2;
+            }
+            else
+            {
+                _spriteRenderer.sortingOrder = 0;
+            }
+
+            if (Vector2.Distance(player.position, aggroCenter.position) < 5f)
+            {
+                _hasAggro = true;
+            }
+
+            if (_hasAggro)
+            {
+                if (Vector2.Distance(transform.position, player.position) > meleeDistance)
+                {
+                    Vector2 movementDirection = Vector2.zero;
+                    movementDirection += (Vector2)(player.position - transform.position).normalized;
+                    rb.velocity = movementDirection.normalized * moveSpeed;
+                    inMeleeRange = false;
+                    _anim.SetBool("inMeleeRange", false);
+                }
+                else if (!inMeleeRange)
+                {
+                    rb.velocity = Vector2.zero;
+                    inMeleeRange = true;
+                    _anim.SetBool("inMeleeRange", true);
+                    StartCoroutine(Attack());
+                }
+            }
+            else
+            {
+                Vector2 movementDirection = Vector2.zero;
+                movementDirection +=
+                    (Vector2)(patrolPoints[patrolDestination].position - transform.position).normalized;
+                rb.velocity = movementDirection.normalized * moveSpeed;
+
+                if (
+                    Vector2.Distance(transform.position, patrolPoints[patrolDestination].position)
+                    < 0.1f
+                )
+                {
+                    patrolDestination = (patrolDestination + 1) % patrolPoints.Length;
+                }
+            }
+
+            Vector3 movementDelta = transform.position - _previousPosition;
+            _previousPosition = transform.position;
+
+            if (movementDelta.x > 0 && !_isFacingRight)
+            {
+                transform.localScale = new Vector3(
+                    -Mathf.Sign(transform.localScale.x),
+                    transform.localScale.y,
+                    1f
+                );
+                _isFacingRight = true;
+            }
+            // Otherwise if the input is moving the player left and the player is facing right...
+            else if (movementDelta.x < 0 && _isFacingRight)
+            {
+                transform.localScale = new Vector3(
+                    -Mathf.Sign(transform.localScale.x),
+                    transform.localScale.y,
+                    1f
+                );
+                _isFacingRight = false;
+            }
+        }
     }
 
     public void TakeDamage(float attackDamage)
