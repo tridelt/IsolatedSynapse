@@ -155,6 +155,10 @@ public class PlayerScript : MonoBehaviour
         {
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     private void UpdatePlayerDirection()

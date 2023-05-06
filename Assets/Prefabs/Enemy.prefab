@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 16193681203540522}
   - component: {fileID: 16193681203540516}
   - component: {fileID: 16193681203540517}
+  - component: {fileID: 8190993494151860286}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -53,9 +54,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   player: {fileID: 0}
-  moveSpeed: 0
+  moveSpeed: 2
   patrolDestination: 0
-  enemySpeed: 2.5
+  enemySpeed: 2
   meleeDistance: 1
   _spriteRenderer: {fileID: 0}
   aggroCenter: {fileID: 0}
@@ -147,3 +148,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &8190993494151860286
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16193681203540526}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 8
+  m_AngularDrag: 8
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

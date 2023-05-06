@@ -9,11 +9,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    float current_health;
+    [SerializeField] float current_health;
 
-    [SerializeField]
-    float max_health;
+    [SerializeField] float max_health;
     public Transform[] patrolPoints;
     public Transform player;
     public float moveSpeed;
@@ -26,6 +24,8 @@ public class Enemy : MonoBehaviour
     private bool _hasAggro = false;
     public SpriteRenderer _spriteRenderer;
     private bool inMeleeRange = false;
+    private Rigidbody2D rb;
+    private Collider2D coll2d;
 
     public bool isAlive
     {
@@ -36,12 +36,14 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        coll2d = GetComponent<Collider2D>();
         _anim = GetComponent<Animator>();
         _previousPosition = transform.position;
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isAlive)
         {
@@ -63,16 +65,15 @@ public class Enemy : MonoBehaviour
             {
                 if (Vector2.Distance(transform.position, player.position) > meleeDistance)
                 {
-                    transform.position = Vector2.MoveTowards(
-                        transform.position,
-                        player.position,
-                        enemySpeed * Time.deltaTime
-                    );
+                    Vector2 movementDirection = Vector2.zero;
+                    movementDirection += (Vector2)(player.position - transform.position).normalized;
+                    rb.velocity = movementDirection.normalized * moveSpeed;
                     inMeleeRange = false;
                     _anim.SetBool("inMeleeRange", false);
                 }
                 else if (!inMeleeRange)
                 {
+                    rb.velocity = Vector2.zero;
                     inMeleeRange = true;
                     _anim.SetBool("inMeleeRange", true);
                     StartCoroutine(Attack());
@@ -80,11 +81,11 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                transform.position = Vector2.MoveTowards(
-                    transform.position,
-                    patrolPoints[patrolDestination].position,
-                    enemySpeed * Time.deltaTime
-                );
+                Vector2 movementDirection = Vector2.zero;
+                movementDirection +=
+                    (Vector2)(patrolPoints[patrolDestination].position - transform.position).normalized;
+                rb.velocity = movementDirection.normalized * moveSpeed;
+
                 if (
                     Vector2.Distance(transform.position, patrolPoints[patrolDestination].position)
                     < 0.1f
@@ -117,6 +118,11 @@ public class Enemy : MonoBehaviour
                 _isFacingRight = false;
             }
         }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            Destroy(coll2d);
+        }
     }
 
     public void TakeDamage(float attackDamage)
@@ -130,7 +136,7 @@ public class Enemy : MonoBehaviour
         if (current_health <= 0)
         {
             _anim.SetBool("isDead", true);
-            Invoke(nameof(EnemyDies), 5f);
+            Invoke(nameof(EnemyDies), 3f);
         }
     }
 
