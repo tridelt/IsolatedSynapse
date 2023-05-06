@@ -5,37 +5,54 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] GameObject ui_object;
+    [SerializeField]
+    GameObject ui_object;
 
     float current_health;
 
-    [Header("Health")] [SerializeField] float max_health;
+    [Header("Health")]
+    [SerializeField]
+    float max_health;
 
-    [Header("Movement")] [SerializeField] float speed; // Movement speed for Selene
+    [Header("Movement")]
+    [SerializeField]
+    float speed; // Movement speed for Selene
 
-    [SerializeField] float dodge_force; // Dodge force for Selene
+    [SerializeField]
+    float dodge_force; // Dodge force for Selene
 
-    [SerializeField] float dodge_duration; // Dodge duration for Selene
+    [SerializeField]
+    float dodge_duration; // Dodge duration for Selene
 
-    [SerializeField] float dodge_cooldown; // Dodge force for Selene
+    [SerializeField]
+    float dodge_cooldown; // Dodge force for Selene
 
-    [SerializeField] Rigidbody2D rb; // Selene's Rigidbody2D component
+    [SerializeField]
+    Rigidbody2D rb; // Selene's Rigidbody2D component
 
-    [SerializeField] Animator animator; // Selene's animator
+    [SerializeField]
+    Animator animator; // Selene's animator
 
-    [SerializeField] Transform[] attack_points;
+    [SerializeField]
+    Transform[] attack_points;
 
-    [SerializeField] float attack_range;
+    [SerializeField]
+    float attack_range;
 
-    [SerializeField] LayerMask enemie_layers;
+    [SerializeField]
+    LayerMask enemie_layers;
 
-    [SerializeField] float damage_taken_shielded;
+    [SerializeField]
+    float damage_taken_shielded;
 
-    [SerializeField] LayerMask rune_layer;
+    [SerializeField]
+    LayerMask rune_layer;
 
-    [SerializeField] LayerMask blockade_layer;
+    [SerializeField]
+    LayerMask blockade_layer;
 
-    [SerializeField] GameObject hook;
+    [SerializeField]
+    GameObject hook;
 
     PlayerControls PlayerInput; // Input System for the player controls
 
@@ -56,8 +73,7 @@ public class PlayerScript : MonoBehaviour
         UsingGadget = 6
     }
 
-    enum
-        PlayerDirections // Enum of the posible directions the player can face (is used to determine the idle or attack animation to use)
+    enum PlayerDirections // Enum of the posible directions the player can face (is used to determine the idle or attack animation to use)
     {
         North = 0,
         South = 1,
@@ -134,7 +150,7 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Movement
+        //Movement
         if (player_state == PlayerStates.Moving)
         {
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
@@ -224,12 +240,10 @@ public class PlayerScript : MonoBehaviour
                 {
                     enemyController.TakeDamage(attackDamage);
                 }
-
                 if (enemy.TryGetComponent<SpecialEnemy>(out specialEnemyController))
                 {
                     specialEnemyController.TakeDamage(attackDamage);
                 }
-
                 if (enemy.TryGetComponent(out bossEnemyController))
                 {
                     bossEnemyController.TakeDamage(attackDamage);
@@ -256,7 +270,6 @@ public class PlayerScript : MonoBehaviour
             {
                 blockade.GetComponent<Blockade>().TakeDamage();
             }
-
             Invoke(nameof(AttackReset), 0.6f);
         }
     }
@@ -351,7 +364,6 @@ public class PlayerScript : MonoBehaviour
         {
             damage *= damage_taken_shielded;
         }
-
         current_health -= damage;
 
         if (current_health == 0)
@@ -364,7 +376,6 @@ public class PlayerScript : MonoBehaviour
         {
             current_health = 0;
         }
-
         ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
     }
 
