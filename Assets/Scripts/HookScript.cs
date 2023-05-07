@@ -104,10 +104,34 @@ public class HookScript : MonoBehaviour
             returning = true;
             ChangeRotation(rotation + 180);
         }
+        else if (collision.tag == "PuzzleBox" && !returning)
+        {
+            Vector2 direction = new Vector2(0,1);
+            switch (rotation)
+            {
+                case 0:
+                    direction = new Vector2(0, -1);
+                    break;
+                case -90:
+                    direction = new Vector2(-1, 0);
+                    break;
+                case -270:
+                    direction = new Vector2(1, 0);
+                    break;
+            }
+            collision.GetComponent<BoxScript>().Hooked(direction);
+            returning = true;
+            ChangeRotation(rotation + 180);
+        }
         else if (collision.tag == "Player" && returning)
         {
             gameObject.SetActive(false);
             player.gameObject.GetComponent<PlayerScript>().HookEnded();
+        }
+        else if (collision.tag != "Player" && collision.tag != "BrokenBox")
+        {
+            returning = true;
+            ChangeRotation(rotation + 180);
         }
     }
 
