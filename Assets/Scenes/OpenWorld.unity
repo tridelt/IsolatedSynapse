@@ -1690,17 +1690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fc1ce44a2d94106b4d434541358404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &392095961 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 375659884185065066, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
-  m_PrefabInstance: {fileID: 1374831110}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &493576086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63344,31 +63333,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8881495035010544771, guid: a55ce78df7a314084aa6bd00ed608e01, type: 3}
   m_PrefabInstance: {fileID: 1580927333}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1123973782 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7313802877233989446, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
-  m_PrefabInstance: {fileID: 1374831110}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1123973783 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7687527298436443134, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
-  m_PrefabInstance: {fileID: 1374831110}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1123973786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123973782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b24f884be3b19438aaedb18fdd2beacc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorName: {fileID: 392095961}
-  dialogText: {fileID: 1424016697}
-  dialogBox: {fileID: 1123973783}
 --- !u!4 &1223431198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8881495035010544771, guid: a55ce78df7a314084aa6bd00ed608e01, type: 3}
@@ -66738,17 +66702,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1424016697 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 896103066230866421, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
-  m_PrefabInstance: {fileID: 1374831110}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1427507261
 PrefabInstance:
   m_ObjectHideFlags: 0

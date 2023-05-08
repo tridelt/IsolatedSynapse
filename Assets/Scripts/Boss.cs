@@ -30,7 +30,7 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sleeping)
+        if (sleeping || isDead)
         {
             return;
         }
@@ -83,8 +83,8 @@ public class Boss : MonoBehaviour
 
         if (health <= 0 && !isDead)
         {
-            isDead = true;
             anim.SetBool("isDead", true);
+            isDead = true;
         }
         else
         {

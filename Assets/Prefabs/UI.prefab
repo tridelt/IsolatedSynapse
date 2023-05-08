@@ -670,6 +670,7 @@ GameObject:
   - component: {fileID: 7687527298436443134}
   - component: {fileID: 1968059177131060860}
   - component: {fileID: 7154927619771305103}
+  - component: {fileID: 1123973786}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -686,8 +687,8 @@ RectTransform:
   m_GameObject: {fileID: 7313802877233989446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5961549092443084623}
   - {fileID: 4176427452567461834}
@@ -737,6 +738,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1123973786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313802877233989446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24f884be3b19438aaedb18fdd2beacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorName: {fileID: 375659884185065066}
+  dialogText: {fileID: 896103066230866421}
+  dialogBox: {fileID: 7687527298436443134}
 --- !u!1 &7775133088945210721
 GameObject:
   m_ObjectHideFlags: 0
