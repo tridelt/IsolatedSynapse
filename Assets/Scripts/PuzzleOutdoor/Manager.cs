@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class Manager : MonoBehaviour
 {
+    public int globalOder = 0;
     public AudioClip trap;
     AudioSource audio;
     public Transform key;
@@ -35,13 +36,13 @@ public class Manager : MonoBehaviour
 
     private void OnTilesStateChange(Tile tile)
     {
-        if (!tile.amIaGoodTile)
+        if (tile.order != globalOder)
         {
             isBlocked = true;
-            onStateChanged.Invoke();
         }
         else
         {
+            globalOder += 1;
             foundCorrectTiles += 1;
             if (foundCorrectTiles == nCorrectTiles)
             {
@@ -49,15 +50,16 @@ public class Manager : MonoBehaviour
                 audio.clip = trap;
                 audio.Play();
                 key.gameObject.SetActive(true);
-                onStateChanged.Invoke();
             }
         }
+        onStateChanged.Invoke();
     }
 
     private void OnResetStateChange()
     {
         if (isBlocked)
         {
+            globalOder = 0;
             isBlocked = false;
             foundCorrectTiles = 0;
             onStateChanged.Invoke();
