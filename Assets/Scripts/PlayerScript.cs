@@ -6,8 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject ui_object,
-        GameManager;
+    GameObject ui_object, GameManager, AudioManager;
 
     float current_health;
 
@@ -112,6 +111,9 @@ public class PlayerScript : MonoBehaviour
 
         //For the moment being we only have the hook, so we set it as default here
         current_gadget = CurrentGadget.Hook;
+
+        // For game consistency
+        GameManager = GameObject.Find("GameManager");
     }
 
     // Start is called before the first frame update
@@ -238,6 +240,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (attack_ready)
         {
+            AudioManager.GetComponent<PlayerAudio>().AttackSound();
             attack_ready = false;
             player_state = PlayerStates.Attacking;
             animator.SetTrigger("Attack");
@@ -299,6 +302,7 @@ public class PlayerScript : MonoBehaviour
 
     void Parry(InputAction.CallbackContext context)
     {
+        AudioManager.GetComponent<PlayerAudio>().ShieldSound();
         player_state = PlayerStates.Parrying;
         animator.SetTrigger("Parry");
     }
@@ -326,6 +330,7 @@ public class PlayerScript : MonoBehaviour
             && movement != Vector2.zero
         )
         {
+            AudioManager.GetComponent<PlayerAudio>().DodgeSound();
             dodge_ready = false;
             player_state = PlayerStates.Dodging;
             GetComponent<TrailRenderer>().emitting = true;
@@ -360,6 +365,7 @@ public class PlayerScript : MonoBehaviour
                     Hook();
                     break;
             }
+            AudioManager.GetComponent<PlayerAudio>().GadgetSound();
         }
     }
 

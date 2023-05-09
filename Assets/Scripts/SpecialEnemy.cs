@@ -23,8 +23,7 @@ public class SpecialEnemy : MonoBehaviour
     [SerializeField]
     float max_health;
 
-    bool weakened,
-        dead;
+    bool weakened, dead, attack_in_process;
 
     Animator anim;
 
@@ -42,6 +41,7 @@ public class SpecialEnemy : MonoBehaviour
         anim = GetComponent<Animator>();
         weakened = false;
         dead = false;
+        attack_in_process = false;
         current_heatlh = max_health;
     }
 
@@ -64,12 +64,13 @@ public class SpecialEnemy : MonoBehaviour
     {
         if (current_heatlh <= 0 && !dead)
         {
+            GetComponents<AudioSource>()[2].Play();
             dead = true;
             anim.SetTrigger("Death");
-            Invoke(nameof(Disable), 2.25f);
+            Invoke(nameof(Disable), 2.75f);
         }
 
-        GetComponent<SpriteRenderer>().flipX = player.position.x > transform.position.x;
+        if(!dead) GetComponent<SpriteRenderer>().flipX = player.position.x > transform.position.x;
 
         //For testing only
         //if (Input.GetKeyDown(KeyCode.K))
@@ -96,10 +97,12 @@ public class SpecialEnemy : MonoBehaviour
         {
             if (weakened)
             {
+                GetComponents<AudioSource>()[1].Play();
                 StartCoroutine(WeakenedAttack());
             }
             else
             {
+                GetComponents<AudioSource>()[0].Play();
                 StartCoroutine(BaseAttack());
             }
 
@@ -109,6 +112,7 @@ public class SpecialEnemy : MonoBehaviour
 
     private IEnumerator BaseAttack()
     {
+        attack_in_process = true;
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(1f);
         float rotation = 0;
@@ -135,6 +139,7 @@ public class SpecialEnemy : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         anim.SetTrigger("AttackEnd");
+        attack_in_process = false;
     }
 
     private IEnumerator WeakenedAttack()
@@ -180,14 +185,18 @@ public class SpecialEnemy : MonoBehaviour
 
     public void PlayerEntered(GameObject playerEnter)
     {
-        player = playerEnter.transform;
-        state = EnemyStates.Attacking;
-        Attack();
+        if (!attack_in_process)
+        {
+            player = playerEnter.transform;
+            state = EnemyStates.Attacking;
+            Attack();
+        }
     }
 
     public void PlayerExited()
     {
         state = EnemyStates.Idle;
+        CancelInvoke();
     }
 
     public static float AngleV2(Vector2 vector2)
