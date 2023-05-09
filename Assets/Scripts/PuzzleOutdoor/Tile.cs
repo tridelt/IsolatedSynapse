@@ -9,9 +9,9 @@ public class Tile : MonoBehaviour
 {
     private int _globalOrder = 0;
     public int order;
-    private bool _alreadyTriggered = false;
-    private bool _isBlocked = false;
-    SpriteRenderer _spriteRenderer;
+    public bool _alreadyTriggered = false;
+    public bool _isBlocked = false;
+    public SpriteRenderer _spriteRenderer;
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
 
 

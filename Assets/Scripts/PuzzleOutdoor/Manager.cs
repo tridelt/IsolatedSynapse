@@ -31,6 +31,19 @@ public class Manager : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        // SetPuzzleSolved();
+    }
+    
+    public void SetPuzzleSolved()
+    {
+        puzzleSolved = true;
+        // for all tiles, set them to be blocked
+        Tile[] tiles = FindObjectsOfType<Tile>();
+        foreach (Tile tile in tiles)
+        {
+            tile._alreadyTriggered = true;
+            tile._spriteRenderer.color = new Color(0.309682f, 0.6415094f, 0.3056248f, 0.5f);
+        }
     }
 
 
