@@ -125,13 +125,23 @@ public class PlayerScript : MonoBehaviour
         shielded = false;
 
         // For game consistency
-        GameManager.GetComponent<GameManager>().LoadPlayerStatus(out current_health, out gadget_availabe);
+        GameManager
+            .GetComponent<GameManager>()
+            .LoadPlayerStatus(out current_health, out gadget_availabe);
         GameManager.GetComponent<GameManager>().LoadSceneStatus();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (DialogManager.isActive)
+        {
+            player_state = PlayerStates.Idle;
+            movement = Vector2.zero;
+            animator.SetFloat("Speed", 0);
+            return;
+        }
+
         if (
             player_state != PlayerStates.Attacking
             && player_state != PlayerStates.Parrying
@@ -395,7 +405,6 @@ public class PlayerScript : MonoBehaviour
         }
         ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
         GameManager.GetComponent<GameManager>().UpdatePlayerStatus(current_health, gadget_availabe);
-
     }
 
     public void PorjectileImpacted(GameObject projectile)

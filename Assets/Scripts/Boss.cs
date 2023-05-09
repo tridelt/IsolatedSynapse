@@ -15,10 +15,14 @@ public class Boss : MonoBehaviour
     public Transform instancePoint;
     public GameObject linearBulletPrefab;
     public GameObject directionBulletPrefab;
+    public AudioClip dragonDeath;
+    public AudioClip fireball;
+    AudioSource audioSource;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         player_pos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -30,7 +34,7 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sleeping)
+        if (sleeping || isDead)
         {
             return;
         }
@@ -83,12 +87,13 @@ public class Boss : MonoBehaviour
 
         if (health <= 0 && !isDead)
         {
-            isDead = true;
             anim.SetBool("isDead", true);
+            isDead = true;
         }
         else
         {
             anim.SetBool("isHurt", true);
+            StartCoroutine(ResetIsHurtTriggered());
         }
     }
 
@@ -96,6 +101,9 @@ public class Boss : MonoBehaviour
     {
         anim.SetTrigger("Attack 1");
         yield return new WaitForSeconds(1.0f);
+        audioSource.clip = fireball;
+        audioSource.Play();
+
         Instantiate(linearBulletPrefab, instancePoint.position, Quaternion.identity);
     }
 
@@ -103,6 +111,8 @@ public class Boss : MonoBehaviour
     {
         anim.SetTrigger("Attack 2");
         yield return new WaitForSeconds(1.0f);
+        audioSource.clip = fireball;
+        audioSource.Play();
         for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.1f);
@@ -116,5 +126,11 @@ public class Boss : MonoBehaviour
                 angle += 20;
             }
         }
+    }
+
+    IEnumerator ResetIsHurtTriggered()
+    {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("isHurt", false);
     }
 }
