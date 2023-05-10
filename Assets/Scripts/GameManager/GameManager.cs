@@ -11,20 +11,14 @@ public class GameManager : Singleton<GameManager>
     float current_heatlh;
 
 
-    // Bools for the open world
+    // Bools for the open world and player
     bool hook_collected, key_obtained, outdoor_puzzle_completed;
-
-    //// Bools for the dungeon
-    //bool first_barrier_broken, second_barrier_broken, puzzle_one_completed, puzzle_two_completed;
-
-    // Bools for the house
-    bool chest_opened;
 
     // Start is called before the first frame update
     void Start()
     {
         current_heatlh = 100;
-        key_obtained = outdoor_puzzle_completed = chest_opened = false;
+        key_obtained = outdoor_puzzle_completed = false;
     }
 
     public void ChangeOpenWorldSpawnPoint(GameObject new_spawn_point)
