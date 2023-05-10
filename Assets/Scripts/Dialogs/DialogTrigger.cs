@@ -11,15 +11,13 @@ public class DialogTrigger : MonoBehaviour
 
     void Update()
     {
-        // if (playerInRange && Input.GetKeyUp(KeyCode.F) && !dialogActive)
-        // {
-        //     StartDialog(); // Trigger dialog if player is in range and F key is pressed
-        //     dialogActive = true;
-        // }
-        // else if (Input.GetKeyUp(KeyCode.F) && dialogActive)
-        // {
-        //     FindObjectOfType<DialogManager>().NextMessage();
-        // }
+        if (playerInRange && !DialogManager.isActive)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                StartDialog();
+            }
+        }
     }
 
     public void StartDialog()
@@ -31,7 +29,7 @@ public class DialogTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartDialog();
+            // StartDialog();
             playerInRange = true;
         }
     }

@@ -21,7 +21,6 @@ public class DialogManager : MonoBehaviour
         currentActors = actors;
         activeMessage = 0;
         isActive = true;
-        dialogBox.gameObject.SetActive(true);
         dialogBox.transform.localScale = new Vector3(1, 1, 1);
         DisplayMessage();
     }
@@ -57,7 +56,7 @@ public class DialogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.F) && isActive)
+        if (Input.GetKeyUp(KeyCode.C) && isActive)
         {
             NextMessage();
         }
