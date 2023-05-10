@@ -8,12 +8,14 @@ public class DialogTrigger : MonoBehaviour
     public Actor[] actors;
     private bool playerInRange = false;
     private bool dialogActive = false;
+    public bool needInput = true;
+    public bool executed = false;
 
     void Update()
     {
         if (playerInRange && !DialogManager.isActive)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (needInput && Input.GetKeyDown(KeyCode.F))
             {
                 StartDialog();
             }
@@ -29,8 +31,15 @@ public class DialogTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // StartDialog();
-            playerInRange = true;
+            if (needInput)
+            {
+                playerInRange = true;
+            }
+            else if (!executed)
+            {
+                StartDialog();
+                executed = true;
+            }
         }
     }
 

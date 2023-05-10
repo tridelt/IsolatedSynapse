@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -89,6 +90,7 @@ public class Boss : MonoBehaviour
         {
             anim.SetBool("isDead", true);
             isDead = true;
+            StartCoroutine(LoadFinalScene());
         }
         else
         {
@@ -103,7 +105,6 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         audioSource.clip = fireball;
         audioSource.Play();
-
         Instantiate(linearBulletPrefab, instancePoint.position, Quaternion.identity);
     }
 
@@ -132,5 +133,12 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         anim.SetBool("isHurt", false);
+    }
+
+    IEnumerator LoadFinalScene()
+    {
+        yield return new WaitForSeconds(5f);
+        Debug.Log("Loading final scene");
+        SceneManager.LoadScene("EndGame");
     }
 }
