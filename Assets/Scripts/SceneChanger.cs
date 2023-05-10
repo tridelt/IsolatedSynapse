@@ -8,12 +8,22 @@ public class SceneChanger : MonoBehaviour
     [SerializeField]
     System.String scene;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] GameObject SpawnPoint;
+
+    GameObject GameManager;
+
+    private void Start()
     {
-        Invoke(nameof(LoadDungeon), 0.5f);
+        GameManager = GameObject.Find("GameManager");
     }
 
-    void LoadDungeon()
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(SceneManager.GetActiveScene().name == "OpenWorld") GameManager.GetComponent<GameManager>().ChangeOpenWorldSpawnPoint(SpawnPoint);
+        Invoke(nameof(LoadNextScene), 0.5f);
+    }
+
+    void LoadNextScene()
     {
         SceneManager.LoadScene(scene);
     }

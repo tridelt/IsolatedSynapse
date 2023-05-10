@@ -25,7 +25,7 @@ public class CollectableKey : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // other.GetComponent<PlayerController>().CollectKey();
+            GameObject.Find("GameManager").GetComponent<GameManager>().KeyObtained();
             Destroy(gameObject);
         }
     }

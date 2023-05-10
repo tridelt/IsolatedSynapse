@@ -6,20 +6,32 @@ public class OpenWorldController : MonoBehaviour
 {
 
     [SerializeField] Transform player;
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] GameObject DungeonDoor, DungeonBlockade1, DungeonBlockade2, DungeonBlockade3, Puzzle;
+
+    public void LoadOpenWorldStatus(Vector3 pos, bool key, bool hook, bool puzzle)
     {
-        
+        player.position = pos;
+
+        DungeonDoor.SetActive(key && hook);
+        DungeonBlockade1.SetActive(!key && !hook);
+        DungeonBlockade2.SetActive(!key && hook);
+        DungeonBlockade3.SetActive(key && !hook);
+
+        if (puzzle) StartCoroutine(SetOutdorPuzzleSolved(key));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateBlockades(bool key, bool hook)
     {
-        
+        DungeonDoor.SetActive(key && hook);
+        DungeonBlockade1.SetActive(!key && !hook);
+        DungeonBlockade2.SetActive(!key && hook);
+        DungeonBlockade3.SetActive(key && !hook);
     }
 
-    public void LoadOpenWorldStatus(GameObject pos, bool key)
+    private IEnumerator SetOutdorPuzzleSolved(bool key)
     {
-        player.position = pos.transform.position;
+        yield return new WaitForSeconds(1f);
+        Puzzle.GetComponent<Manager>().SetPuzzleSolved(key);
     }
 }

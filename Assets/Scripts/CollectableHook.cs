@@ -25,7 +25,7 @@ public class CollectableHook : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // other.GetComponent<PlayerController>().CollectHook();
+            other.GetComponent<PlayerScript>().HookCollected();
             Destroy(gameObject);
         }
     }

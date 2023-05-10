@@ -112,8 +112,8 @@ public class PlayerScript : MonoBehaviour
         //For the moment being we only have the hook, so we set it as default here
         current_gadget = CurrentGadget.Hook;
 
-        // For game consistency
-        GameManager = GameObject.Find("GameManager");
+        //// For game consistency
+        //GameManager = GameObject.Find("GameManager");
     }
 
     // Start is called before the first frame update
@@ -125,9 +125,8 @@ public class PlayerScript : MonoBehaviour
         shielded = false;
 
         // For game consistency
-        GameManager
-            .GetComponent<GameManager>()
-            .LoadPlayerStatus(out current_health, out gadget_availabe);
+        GameManager = GameObject.Find("GameManager");
+        GameManager.GetComponent<GameManager>().LoadPlayerStatus(out current_health, out gadget_availabe);
         GameManager.GetComponent<GameManager>().LoadSceneStatus();
     }
 
@@ -173,10 +172,6 @@ public class PlayerScript : MonoBehaviour
         if (player_state == PlayerStates.Moving)
         {
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
         }
     }
 
@@ -277,7 +272,6 @@ public class PlayerScript : MonoBehaviour
             );
             foreach (Collider2D rune in runes_hit)
             {
-                float attackDamage = 30;
                 rune.GetComponent<Rune>().Triggered();
             }
 
@@ -355,7 +349,7 @@ public class PlayerScript : MonoBehaviour
 
     void Gadget(InputAction.CallbackContext context)
     {
-        gadget_availabe = true; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        //gadget_availabe = true; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         if (gadget_availabe)
         {
             player_state = PlayerStates.UsingGadget;
@@ -378,6 +372,12 @@ public class PlayerScript : MonoBehaviour
     public void HookEnded()
     {
         player_state = PlayerStates.Idle;
+    }
+
+    public void HookCollected()
+    {
+        gadget_availabe = true;
+        GameManager.GetComponent<GameManager>().UpdatePlayerStatus(current_health, gadget_availabe);
     }
 
     private void OnDrawGizmosSelected()

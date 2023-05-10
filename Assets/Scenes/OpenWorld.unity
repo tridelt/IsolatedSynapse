@@ -1201,6 +1201,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a55ce78df7a314084aa6bd00ed608e01, type: 3}
+--- !u!1 &79367012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79367015}
+  - component: {fileID: 79367014}
+  - component: {fileID: 79367013}
+  m_Layer: 0
+  m_Name: DungeonBlockade 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &79367013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79367012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9513f774a14914c459bc12c467c9a043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messages:
+  - actorId: 0
+    message: I already have the key, but I should'nt go inside without my hook.
+  - actorId: 0
+    message: I think it might be back at my house...
+  actors:
+  - name: Selene
+    sprite: {fileID: 0}
+--- !u!61 &79367014
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79367012}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.22356415, y: -0.29808855}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.583435, y: 2.1426725}
+  m_EdgeRadius: 0
+--- !u!4 &79367015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79367012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.83, y: 11.67, z: -0.31366327}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &85153584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51738,7 +51817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1461202264107752264, guid: a55ce78df7a314084aa6bd00ed608e01, type: 3}
       propertyPath: _alreadyTriggered
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8881495035010544770, guid: a55ce78df7a314084aa6bd00ed608e01, type: 3}
       propertyPath: m_Name
@@ -52019,6 +52098,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ead8caf33d92814fb269f20f4071c86, type: 3}
+--- !u!1 &809903551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809903552}
+  - component: {fileID: 809903553}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &809903552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809903551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.500751, y: -28.023664, z: -20.176586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &809903553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809903551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395330dcfc925594f9b29c60fb3354af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  open_world_spawn_point: {x: 0, y: 0, z: 0}
+  max_health: 0
 --- !u!1 &845467894
 GameObject:
   m_ObjectHideFlags: 0
@@ -63424,6 +63549,10 @@ PrefabInstance:
       propertyPath: scene
       value: House
       objectReference: {fileID: 0}
+    - target: {fileID: 981458426, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 809903551}
     - target: {fileID: 949603398433705141, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -63470,7 +63599,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 949603398433705143, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
       propertyPath: m_Name
-      value: SceneChanger (1)
+      value: SceneChanger (House)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597628648553062685, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597628648553062685, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
@@ -66832,6 +66969,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a55ce78df7a314084aa6bd00ed608e01, type: 3}
+--- !u!1 &1602687729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1602687731}
+  - component: {fileID: 1602687730}
+  m_Layer: 0
+  m_Name: SceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1602687730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602687729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030f48734ea38734293c9c88532d798c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 264831236}
+  DungeonDoor: {fileID: 949603397531259203}
+  DungeonBlockade1: {fileID: 1769640984}
+  DungeonBlockade2: {fileID: 2111502417}
+  DungeonBlockade3: {fileID: 79367012}
+  Puzzle: {fileID: 845467894}
+--- !u!4 &1602687731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602687729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.79705, y: -13.657761, z: -0.45309824}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1611646150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66967,6 +67154,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8881495035010544771, guid: a55ce78df7a314084aa6bd00ed608e01, type: 3}
   m_PrefabInstance: {fileID: 1632663050}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1769640984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769640986}
+  - component: {fileID: 1769640985}
+  - component: {fileID: 1769640987}
+  m_Layer: 0
+  m_Name: DungeonBlockade 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1769640985
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769640984}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.22356415, y: -0.29808855}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.583435, y: 2.1426725}
+  m_EdgeRadius: 0
+--- !u!4 &1769640986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769640984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.83, y: 11.67, z: -0.31366327}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1769640987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769640984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9513f774a14914c459bc12c467c9a043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messages:
+  - actorId: 0
+    message: I need to find the key to the Sacred Temple in order to get in.
+  - actorId: 0
+    message: I should probably bring my hook along with me as well.
+  actors:
+  - name: Selen
+    sprite: {fileID: 0}
 --- !u!1 &1864688985
 GameObject:
   m_ObjectHideFlags: 0
@@ -80578,6 +80844,83 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &2111502417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111502420}
+  - component: {fileID: 2111502419}
+  - component: {fileID: 2111502418}
+  m_Layer: 0
+  m_Name: DungeonBlockade 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2111502418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111502417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9513f774a14914c459bc12c467c9a043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messages:
+  - actorId: 0
+    message: I have my hook, but I still need the key to the Sacred Temple.
+  actors:
+  - name: Selene
+    sprite: {fileID: 0}
+--- !u!61 &2111502419
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111502417}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.22356415, y: -0.29808855}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.583435, y: 2.1426725}
+  m_EdgeRadius: 0
+--- !u!4 &2111502420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111502417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.83, y: 11.67, z: -0.31366327}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &949603397531259202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80589,6 +80932,10 @@ PrefabInstance:
       propertyPath: scene
       value: Dungeon
       objectReference: {fileID: 0}
+    - target: {fileID: 981458426, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 809903551}
     - target: {fileID: 949603398433705141, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -80635,10 +80982,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 949603398433705143, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
       propertyPath: m_Name
-      value: SceneChanger
+      value: SceneChanger (Dungeon)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
+--- !u!1 &949603397531259203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 949603398433705143, guid: 5999d93ea296ec44694c74b279b6eb5a, type: 3}
+  m_PrefabInstance: {fileID: 949603397531259202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8881495034885249394
 PrefabInstance:
   m_ObjectHideFlags: 0

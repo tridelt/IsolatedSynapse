@@ -16,8 +16,11 @@ public class Manager : MonoBehaviour
     public int foundCorrectTiles = 0;
     public bool puzzleSolved = false;
 
+    GameObject GameManager;
+
     void Awake()
     {
+
         Tile[] tiles = FindObjectsOfType<Tile>();
         foreach (Tile tile in tiles)
         {
@@ -31,10 +34,11 @@ public class Manager : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        GameManager = GameObject.Find("GameManager");
         // SetPuzzleSolved();
     }
     
-    public void SetPuzzleSolved()
+    public void SetPuzzleSolved(bool key_obtained)
     {
         puzzleSolved = true;
         // for all tiles, set them to be blocked
@@ -44,6 +48,7 @@ public class Manager : MonoBehaviour
             tile._alreadyTriggered = true;
             tile._spriteRenderer.color = new Color(0.309682f, 0.6415094f, 0.3056248f, 0.5f);
         }
+        key.gameObject.SetActive(!key_obtained);
     }
 
 
@@ -63,6 +68,7 @@ public class Manager : MonoBehaviour
                 audio.clip = trap;
                 audio.Play();
                 key.gameObject.SetActive(true);
+                GameManager.GetComponent<GameManager>().OpenWorldPuzzleCompleted();
             }
         }
         onStateChanged.Invoke();

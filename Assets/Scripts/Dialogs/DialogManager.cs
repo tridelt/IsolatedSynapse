@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class DialogManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class DialogManager : MonoBehaviour
     Actor[] currentActors;
     int activeMessage = 0;
     public static bool isActive = false;
+
+    PlayerControls PlayerInput; // Input System for the player controls
 
     public void OpenDialogue(Message[] messages, Actor[] actors)
     {
@@ -34,7 +37,7 @@ public class DialogManager : MonoBehaviour
         dialogText.text = message.message;
     }
 
-    public void NextMessage()
+    public void NextMessage(InputAction.CallbackContext context)
     {
         activeMessage++;
         if (activeMessage < currentMessages.Length)
@@ -54,12 +57,20 @@ public class DialogManager : MonoBehaviour
         dialogBox.transform.localScale = new Vector3(0, 0, 0);
     }
 
+    private void Awake()
+    {
+        PlayerInput = new PlayerControls();
+        PlayerInput.Enable();
+
+        PlayerInput.Player.Interact.performed += NextMessage;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.F) && isActive)
-        {
-            NextMessage();
-        }
+        //if (Input.GetKeyUp(KeyCode.F) && isActive)
+        //{
+        //    NextMessage();
+        //}
     }
 }
