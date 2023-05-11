@@ -6,10 +6,11 @@ public class DialogTrigger : MonoBehaviour
 {
     public Message[] messages;
     public Actor[] actors;
+    public bool needInput = true;
+
     private bool playerInRange = false;
     private bool dialogActive = false;
-    public bool needInput = true;
-    public bool executed = false;
+    private bool executed = false;
 
     void Update()
     {
