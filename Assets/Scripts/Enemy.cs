@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float current_health;
-
     [SerializeField] float max_health;
     public Transform[] patrolPoints;
-    public Transform player;
+    private Transform player;
     public float moveSpeed;
     public int patrolDestination = 0;
     public float enemySpeed = 50.5f;
@@ -26,6 +26,9 @@ public class Enemy : MonoBehaviour
     private bool inMeleeRange = false;
     private Rigidbody2D rb;
     private Collider2D coll2d;
+    
+    public AudioClip enemySpottedSound;
+    AudioSource audio;
 
     public bool isAlive
     {
@@ -34,8 +37,15 @@ public class Enemy : MonoBehaviour
 
     public Transform aggroCenter;
 
+    private void Awake()
+    {
+        player = GameObject.Find("Selene").transform;
+    }
+
     void Start()
     {
+        audio = GetComponent<AudioSource>();
+        audio.clip = enemySpottedSound;
         rb = GetComponent<Rigidbody2D>();
         coll2d = GetComponent<Collider2D>();
         _anim = GetComponent<Animator>();
@@ -56,9 +66,14 @@ public class Enemy : MonoBehaviour
                 _spriteRenderer.sortingOrder = 0;
             }
 
-            if (Vector2.Distance(player.position, aggroCenter.position) < 5f)
+            if (!_hasAggro)
             {
-                _hasAggro = true;
+                if (Vector2.Distance(player.position, aggroCenter.position) < 5f)
+                {
+                    audio.clip = enemySpottedSound;
+                    audio.Play();
+                    _hasAggro = true;
+                }
             }
 
             if (_hasAggro)
