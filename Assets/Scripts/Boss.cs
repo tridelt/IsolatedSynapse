@@ -90,7 +90,7 @@ public class Boss : MonoBehaviour
         {
             anim.SetBool("isDead", true);
             isDead = true;
-            StartCoroutine(LoadFinalScene());
+            StartCoroutine(DisplayFinalDialog());
         }
         else
         {
@@ -135,10 +135,19 @@ public class Boss : MonoBehaviour
         anim.SetBool("isHurt", false);
     }
 
-    IEnumerator LoadFinalScene()
+    IEnumerator DisplayFinalDialog()
     {
-        yield return new WaitForSeconds(5f);
-        Debug.Log("Loading final scene");
-        SceneManager.LoadScene("EndGame");
+        yield return new WaitForSeconds(6f);
+        Actor[] actors = new Actor[1];
+        Message[] messages = new Message[2];
+        actors[0] = new Actor();
+        actors[0].name = "Selene";
+        messages[0] = new Message();
+        messages[0].actorId = 0;
+        messages[0].message = "Parece que lo he logrado...";
+        messages[1] = new Message();
+        messages[1].actorId = 0;
+        messages[1].message = "Ahora podre volver a casa...";
+        FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
 }
