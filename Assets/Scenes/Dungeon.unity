@@ -1298,7 +1298,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: 663be74103c7f4fdd95ce3d70c89b519, type: 3}
       - {fileID: 21300000, guid: b85f1772150f641eb9d05177dc271aff, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 22, y: -3, z: 0}
@@ -1306,7 +1306,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: 663be74103c7f4fdd95ce3d70c89b519, type: 3}
       - {fileID: 21300000, guid: b85f1772150f641eb9d05177dc271aff, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 28, y: -3, z: 0}
@@ -1370,7 +1370,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: 3b70e65664ff64e52b0726cfeaf840b5, type: 3}
       - {fileID: 21300000, guid: e19210ac72b0245859d143cae262c0e8, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 40, y: 49, z: 0}
@@ -2855,6 +2855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleVulnerability
       objectReference: {fileID: 0}
+    - target: {fileID: 7752436734787670200, guid: dead9c6042b1241c59f9381b58af3c41, type: 3}
+      propertyPath: spottedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bc3f956b3bd5448c6a137f0fa26516f5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dead9c6042b1241c59f9381b58af3c41, type: 3}
 --- !u!1 &729650955
