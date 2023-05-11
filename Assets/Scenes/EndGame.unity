@@ -285,7 +285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Continuara..
+  m_text: To be   continued
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cef031620926643ec8f9bb595da43048, type: 2}
   m_sharedMaterial: {fileID: -1714885040560003530, guid: cef031620926643ec8f9bb595da43048, type: 2}
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1218212268}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &686687885
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VOLVER AL MENU
+  m_text: EXIT GAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1bc247717c1f4d96b4a9f3e2a96cddb, type: 2}
   m_sharedMaterial: {fileID: -6231698604404689690, guid: e1bc247717c1f4d96b4a9f3e2a96cddb, type: 2}
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Isolated Synapse    parte 1
+  m_text: Isolated Synapse    part   I
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cef031620926643ec8f9bb595da43048, type: 2}
   m_sharedMaterial: {fileID: -1714885040560003530, guid: cef031620926643ec8f9bb595da43048, type: 2}

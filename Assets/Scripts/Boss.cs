@@ -148,6 +148,8 @@ public class Boss : MonoBehaviour
         messages[1] = new Message();
         messages[1].actorId = 0;
         messages[1].message = "I need to find out why everybody has lost their mind and fix it.";
+        messages[2] = new Message();
+        messages[2].actorId = 0;
         messages[2].message = "But first, I should leave the Sacred Temple. Maybe those stairs lead to the way out...";
         FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }

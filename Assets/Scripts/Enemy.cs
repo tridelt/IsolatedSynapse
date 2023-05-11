@@ -179,7 +179,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         while (inMeleeRange)
         {
-            player.gameObject.GetComponent<PlayerScript>().TakeDamage(10f);
+            player.gameObject.GetComponent<PlayerScript>().TakeDamage(3f);
             yield return new WaitForSeconds(1.5f);
         }
     }

@@ -58,7 +58,7 @@ public class GameManager : Singleton<GameManager>
                     );
                 break;
             case "House":
-                SceneController.GetComponent<HouseController>().LoadHouseStatus(hook_collected);
+                SceneController.GetComponent<HouseController>().LoadHouseStatus(hook_collected, key_obtained);
                 break;
         }
     }
@@ -72,9 +72,7 @@ public class GameManager : Singleton<GameManager>
     {
         key_obtained = true;
         GameObject SceneController = GameObject.Find("SceneController");
-        SceneController
-            .GetComponent<OpenWorldController>()
-            .UpdateBlockades(key_obtained, hook_collected);
+        SceneController.GetComponent<OpenWorldController>().UpdateBlockades(key_obtained, hook_collected);
     }
 
 }
