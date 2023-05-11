@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class Boss : MonoBehaviour
         transform.localScale = new Vector2(flipDirection, 1);
 
         timeBtwShots += Time.deltaTime;
-        if (timeBtwShots >= 2f)
+        if (timeBtwShots >= 4f)
         {
             int random = Random.Range(0, 2);
             if (random == 0)
@@ -89,6 +90,7 @@ public class Boss : MonoBehaviour
         {
             anim.SetBool("isDead", true);
             isDead = true;
+            StartCoroutine(DisplayFinalDialog());
         }
         else
         {
@@ -100,17 +102,16 @@ public class Boss : MonoBehaviour
     IEnumerator SimpleShot()
     {
         anim.SetTrigger("Attack 1");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         audioSource.clip = fireball;
         audioSource.Play();
-
         Instantiate(linearBulletPrefab, instancePoint.position, Quaternion.identity);
     }
 
     IEnumerator SpecialShot()
     {
         anim.SetTrigger("Attack 2");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         audioSource.clip = fireball;
         audioSource.Play();
         for (int i = 0; i < 3; i++)
@@ -132,5 +133,21 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         anim.SetBool("isHurt", false);
+    }
+
+    IEnumerator DisplayFinalDialog()
+    {
+        yield return new WaitForSeconds(6f);
+        Actor[] actors = new Actor[1];
+        Message[] messages = new Message[2];
+        actors[0] = new Actor();
+        actors[0].name = "Selene";
+        messages[0] = new Message();
+        messages[0].actorId = 0;
+        messages[0].message = "Parece que lo he logrado...";
+        messages[1] = new Message();
+        messages[1].actorId = 0;
+        messages[1].message = "Ahora podre volver a casa...";
+        FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
 }

@@ -1,28 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogTrigger : MonoBehaviour
 {
     public Message[] messages;
     public Actor[] actors;
+    public bool needInput = true;
+
     private bool playerInRange = false;
     private bool dialogActive = false;
+    private bool executed = false;
+    PlayerControls PlayerInput; // Input System for the player controls
 
     void Update()
     {
-        // if (playerInRange && Input.GetKeyUp(KeyCode.F) && !dialogActive)
+        // if (playerInRange && !DialogManager.isActive)
         // {
-        //     StartDialog(); // Trigger dialog if player is in range and F key is pressed
-        //     dialogActive = true;
-        // }
-        // else if (Input.GetKeyUp(KeyCode.F) && dialogActive)
-        // {
-        //     FindObjectOfType<DialogManager>().NextMessage();
+        //     if (needInput && Input.GetKeyDown(KeyCode.F))
+        //     {
+        //         StartDialog();
+        //     }
         // }
     }
 
-    public void StartDialog()
+    void Awake()
+    {
+        PlayerInput = new PlayerControls();
+        PlayerInput.Enable();
+        PlayerInput.Player.Interact.performed += StartDialog;
+    }
+
+    public void StartDialog(InputAction.CallbackContext context)
+    {
+        if (playerInRange && !DialogManager.isActive)
+        {
+            FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
+        }
+    }
+
+    public void StartDialogTwo()
     {
         FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
@@ -31,8 +49,15 @@ public class DialogTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartDialog();
-            playerInRange = true;
+            if (needInput)
+            {
+                playerInRange = true;
+            }
+            else if (!executed)
+            {
+                StartDialogTwo();
+                executed = true;
+            }
         }
     }
 

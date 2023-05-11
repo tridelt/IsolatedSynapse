@@ -15,6 +15,7 @@ public class DialogManager : MonoBehaviour
     Actor[] currentActors;
     int activeMessage = 0;
     public static bool isActive = false;
+    public static bool dialogFinished = false;
 
     PlayerControls PlayerInput; // Input System for the player controls
 
@@ -24,7 +25,7 @@ public class DialogManager : MonoBehaviour
         currentActors = actors;
         activeMessage = 0;
         isActive = true;
-        dialogBox.gameObject.SetActive(true);
+        dialogFinished = false;
         dialogBox.transform.localScale = new Vector3(1, 1, 1);
         DisplayMessage();
     }
@@ -47,11 +48,11 @@ public class DialogManager : MonoBehaviour
         else
         {
             isActive = false;
+            dialogFinished = true;
             dialogBox.transform.localScale = new Vector3(0, 0, 0);
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         dialogBox.transform.localScale = new Vector3(0, 0, 0);
@@ -61,16 +62,6 @@ public class DialogManager : MonoBehaviour
     {
         PlayerInput = new PlayerControls();
         PlayerInput.Enable();
-
-        PlayerInput.Player.Interact.performed += NextMessage;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKeyUp(KeyCode.F) && isActive)
-        //{
-        //    NextMessage();
-        //}
+        PlayerInput.Player.Dodge.performed += NextMessage;
     }
 }
