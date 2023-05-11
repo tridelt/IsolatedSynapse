@@ -26,7 +26,21 @@ public class CollectableKey : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().KeyObtained();
+            DisplayDialogKey();
             Destroy(gameObject);
         }
+    }
+
+    void DisplayDialogKey()
+    {
+        Actor[] actors = new Actor[1];
+        Message[] messages = new Message[1];
+        actors[0] = new Actor();
+        actors[0].name = "Selene";
+        messages[0] = new Message();
+        messages[0].actorId = 0;
+        messages[0].message = "This key... it reminds me of the Sacred Temple.";
+
+        FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
 }

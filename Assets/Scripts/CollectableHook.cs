@@ -26,7 +26,21 @@ public class CollectableHook : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerScript>().HookCollected();
+            DisplayDialogHook();
             Destroy(gameObject);
         }
+    }
+
+    void DisplayDialogHook()
+    {
+        Actor[] actors = new Actor[1];
+        Message[] messages = new Message[1];
+        actors[0] = new Actor();
+        actors[0].name = "Selene";
+        messages[0] = new Message();
+        messages[0].actorId = 0;
+        messages[0].message = "Here it is, my trusty hook. Now I'm prepared for anything!";
+
+        FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
 }

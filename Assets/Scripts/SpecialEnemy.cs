@@ -77,10 +77,10 @@ public class SpecialEnemy : MonoBehaviour
         //{
         //    PlayerEntered(player.gameObject);
         //}
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    Weakened();
-        //}
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Weakened();
+        }
         //if (Input.GetKeyDown(KeyCode.L))
         //{
         //    PlayerExited();
@@ -93,7 +93,7 @@ public class SpecialEnemy : MonoBehaviour
 
     private void Attack()
     {
-        if (state == EnemyStates.Attacking && !dead)
+        if (state == EnemyStates.Attacking && !dead && !attack_in_process)
         {
             if (weakened)
             {
@@ -144,11 +144,13 @@ public class SpecialEnemy : MonoBehaviour
 
     private IEnumerator WeakenedAttack()
     {
+        attack_in_process = true;
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.75f);
         float rotation = AngleV2(player.position - transform.position);
         GameObject projectile = SpawnAmmo(transform.position);
         projectile.GetComponent<ProjectileScript>().ChangeRotation(rotation);
+        attack_in_process = false;
     }
 
     public void Weakened()
@@ -196,7 +198,7 @@ public class SpecialEnemy : MonoBehaviour
     public void PlayerExited()
     {
         state = EnemyStates.Idle;
-        CancelInvoke();
+        //CancelInvoke();
     }
 
     public static float AngleV2(Vector2 vector2)

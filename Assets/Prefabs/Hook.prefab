@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: []
-  speed: 15
-  returnSpeed: 35
-  range: 10
+  speed: 20
+  returnSpeed: 50
+  range: 2.5
   player: {fileID: 0}
   line: {fileID: 8408001350462465110}
 --- !u!61 &8408001349901835599

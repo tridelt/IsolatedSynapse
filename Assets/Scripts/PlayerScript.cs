@@ -128,9 +128,8 @@ public class PlayerScript : MonoBehaviour
 
         // For game consistency
         GameManager = GameObject.Find("GameManager");
-        GameManager
-            .GetComponent<GameManager>()
-            .LoadPlayerStatus(out current_health, out gadget_availabe);
+        GameManager.GetComponent<GameManager>().LoadPlayerStatus(out current_health, out gadget_availabe);
+        ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);
         GameManager.GetComponent<GameManager>().LoadSceneStatus();
     }
 
@@ -176,6 +175,10 @@ public class PlayerScript : MonoBehaviour
         if (player_state == PlayerStates.Moving)
         {
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        }
+        else if (player_state != PlayerStates.Dodging)
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -325,6 +328,7 @@ public class PlayerScript : MonoBehaviour
             dodge_ready
             && player_state != PlayerStates.Attacking
             && player_state != PlayerStates.Parrying
+            && player_state != PlayerStates.UsingGadget
             && movement != Vector2.zero
         )
         {
@@ -353,7 +357,6 @@ public class PlayerScript : MonoBehaviour
 
     void Gadget(InputAction.CallbackContext context)
     {
-        //gadget_availabe = true; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         if (gadget_availabe)
         {
             player_state = PlayerStates.UsingGadget;

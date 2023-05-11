@@ -21,6 +21,7 @@ public class DialogManager : MonoBehaviour
 
     public void OpenDialogue(Message[] messages, Actor[] actors)
     {
+        PlayerInput.UI.Enable();
         currentMessages = messages;
         currentActors = actors;
         activeMessage = 0;
@@ -50,6 +51,7 @@ public class DialogManager : MonoBehaviour
             isActive = false;
             dialogFinished = true;
             dialogBox.transform.localScale = new Vector3(0, 0, 0);
+            PlayerInput.UI.Disable();
         }
     }
 
@@ -61,7 +63,7 @@ public class DialogManager : MonoBehaviour
     private void Awake()
     {
         PlayerInput = new PlayerControls();
-        PlayerInput.Enable();
-        PlayerInput.Player.Dodge.performed += NextMessage;
+        PlayerInput.UI.Disable();
+        PlayerInput.UI.Submit.performed += NextMessage;
     }
 }

@@ -43,6 +43,11 @@ public class HookScript : MonoBehaviour
         if (returning)
         {
             transform.position += transform.up * Time.deltaTime * returnSpeed;
+            if (dist > 0.5)
+            {
+                gameObject.SetActive(false);
+                player.gameObject.GetComponent<PlayerScript>().HookEnded();
+            }
         }
         else
         {

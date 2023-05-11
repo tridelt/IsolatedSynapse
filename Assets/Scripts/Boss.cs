@@ -139,15 +139,16 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(6f);
         Actor[] actors = new Actor[1];
-        Message[] messages = new Message[2];
+        Message[] messages = new Message[3];
         actors[0] = new Actor();
         actors[0].name = "Selene";
         messages[0] = new Message();
         messages[0].actorId = 0;
-        messages[0].message = "Parece que lo he logrado...";
+        messages[0].message = "Seems like it's dead, whatever it was...";
         messages[1] = new Message();
         messages[1].actorId = 0;
-        messages[1].message = "Ahora podre volver a casa...";
+        messages[1].message = "I need to find out why everybody has lost their mind and fix it.";
+        messages[2].message = "But first, I should leave the Sacred Temple. Maybe those stairs lead to the way out...";
         FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
 }

@@ -18,7 +18,7 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_hasAlreadyTriggered)
+        if (_hasAlreadyTriggered || other.tag != "Player")
         {
             return;
         }

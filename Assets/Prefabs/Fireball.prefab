@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  damage: 25
-  disableTime: 5
+  damage: 5
+  disableTime: 4
 --- !u!61 &5505320622476190086
 BoxCollider2D:
   m_ObjectHideFlags: 0

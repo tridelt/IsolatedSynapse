@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     float max_health;
-    float current_heatlh;
+    float current_heatlh = 100;
 
     // Bools for the open world and player
     bool hook_collected,
@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        current_heatlh = 100;
+        current_heatlh = max_health;
         key_obtained = outdoor_puzzle_completed = false;
     }
 
@@ -39,11 +39,6 @@ public class GameManager : Singleton<GameManager>
     {
         current_heatlh = health;
         hook_collected = hook;
-
-        if (hook_collected)
-        {
-            DisplayDialogHook();
-        }
     }
 
     public void LoadSceneStatus()
@@ -82,30 +77,4 @@ public class GameManager : Singleton<GameManager>
             .UpdateBlockades(key_obtained, hook_collected);
     }
 
-    void DisplayDialogKey()
-    {
-        Actor[] actors = new Actor[1];
-        Message[] messages = new Message[2];
-        actors[0] = new Actor();
-        actors[0].name = "Selene";
-        messages[0] = new Message();
-        messages[0].actorId = 0;
-        messages[0].message = "Creo que a esta llave la podre utilizar en algun lugar...";
-
-        FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
-    }
-
-    void DisplayDialogHook()
-    {
-        Actor[] actors = new Actor[1];
-        Message[] messages = new Message[2];
-        actors[0] = new Actor();
-        actors[0].name = "Selene";
-        messages[0] = new Message();
-        messages[0].actorId = 0;
-        messages[0].message =
-            "Que interesante esta herramienta, creo que me seria de utilidad mas adelante...";
-
-        FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
-    }
 }
