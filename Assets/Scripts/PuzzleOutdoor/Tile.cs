@@ -7,25 +7,33 @@ using UnityEngine.Events;
 
 public class Tile : MonoBehaviour
 {
-    private int _globalOrder = 0;
+    // private Manager _manager = GameObject.Find("Manager").GetComponent<Manager>();
+
+    private Manager _manager;
     public int order;
     public bool _alreadyTriggered = false;
-    public bool _isBlocked = false;
     public SpriteRenderer _spriteRenderer;
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
 
 
     private void Awake()
     {
-        Manager manager = FindObjectsOfType<Manager>()[0];
-        manager.onStateChanged.AddListener(() => OnManagerStateChange(manager));
-
+        _manager = FindObjectsOfType<Manager>()[0];
         ResetArea resetArea = FindObjectsOfType<ResetArea>()[0];
         resetArea.onStateChanged.AddListener(() => OnResetAreaChange());
     }
 
     void Start()
     {
+        // if (gameObject.name == "Square (4)")
+        // { 
+        //     // print all variables 
+        //     print("order: " + order);
+        //     print("_alreadyTriggered: " + _alreadyTriggered);
+        //     print("_isBlocked: " + _isBlocked);
+        //     
+        // }
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -36,13 +44,13 @@ public class Tile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (_alreadyTriggered || _isBlocked)
+        if (_alreadyTriggered || _manager.isBlocked)
         {
             return;
         }
 
 
-        if (order == _globalOrder)
+        if (order == _manager.globalOder)
         {
             _spriteRenderer.color = new Color(0.309682f, 0.6415094f, 0.3056248f, 0.5f);
         }
@@ -56,15 +64,9 @@ public class Tile : MonoBehaviour
     }
 
 
-    private void OnManagerStateChange(Manager manager)
-    {
-        _isBlocked = manager.isBlocked;
-        _globalOrder = manager.globalOder;
-    }
-
     private void OnResetAreaChange()
     {
-        if (_isBlocked)
+        if (!_manager.isPuzzleSolved)
         {
             _alreadyTriggered = false;
             _spriteRenderer.color = new Color(0f, 0f, 0f, 0f);
