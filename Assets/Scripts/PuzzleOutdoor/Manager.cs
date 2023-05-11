@@ -14,7 +14,9 @@ public class Manager : MonoBehaviour
     public UnityEvent onStateChanged; // Event to be triggered when the state is changed
     public int nCorrectTiles;
     public int foundCorrectTiles = 0;
-    public bool puzzleSolved = false;
+    public bool isPuzzleSolved = false;
+
+    GameObject GameManager;
 
     void Awake()
     {
@@ -31,6 +33,21 @@ public class Manager : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        GameManager = GameObject.Find("GameManager");
+        // SetPuzzleSolved();
+    }
+    
+    public void SetPuzzleSolved(bool key_obtained)
+    {
+        isPuzzleSolved = true;
+        // for all tiles, set them to be blocked
+        Tile[] tiles = FindObjectsOfType<Tile>();
+        foreach (Tile tile in tiles)
+        {
+            tile._alreadyTriggered = true;
+            tile._spriteRenderer.color = new Color(0.309682f, 0.6415094f, 0.3056248f, 0.5f);
+        }
+        key.gameObject.SetActive(!key_obtained);
     }
 
 
@@ -46,13 +63,13 @@ public class Manager : MonoBehaviour
             foundCorrectTiles += 1;
             if (foundCorrectTiles == nCorrectTiles)
             {
-                puzzleSolved = true;
+                isPuzzleSolved = true;
                 audio.clip = trap;
                 audio.Play();
                 key.gameObject.SetActive(true);
+                GameManager.GetComponent<GameManager>().OpenWorldPuzzleCompleted();
             }
         }
-        onStateChanged.Invoke();
     }
 
     private void OnResetStateChange()
@@ -62,7 +79,6 @@ public class Manager : MonoBehaviour
             globalOder = 0;
             isBlocked = false;
             foundCorrectTiles = 0;
-            onStateChanged.Invoke();
         }
     }
 }

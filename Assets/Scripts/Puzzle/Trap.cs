@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public AudioClip trap;
+    public AudioClip spottedSound;
     AudioSource audio;
     public Transform blockade_east;
     public Transform blockade_south;
@@ -26,7 +26,7 @@ public class Trap : MonoBehaviour
         _hasAlreadyTriggered = true;
         blockade_east.gameObject.SetActive(true);
         blockade_south.gameObject.SetActive(true);
-        audio.clip = trap;
+        audio.clip = spottedSound;
         audio.Play();
     }
 }
