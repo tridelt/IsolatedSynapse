@@ -67,7 +67,7 @@ public class Boss : MonoBehaviour
         transform.localScale = new Vector2(flipDirection, 1);
 
         timeBtwShots += Time.deltaTime;
-        if (timeBtwShots >= 2f)
+        if (timeBtwShots >= 4f)
         {
             int random = Random.Range(0, 2);
             if (random == 0)
@@ -102,7 +102,7 @@ public class Boss : MonoBehaviour
     IEnumerator SimpleShot()
     {
         anim.SetTrigger("Attack 1");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         audioSource.clip = fireball;
         audioSource.Play();
         Instantiate(linearBulletPrefab, instancePoint.position, Quaternion.identity);
@@ -111,7 +111,7 @@ public class Boss : MonoBehaviour
     IEnumerator SpecialShot()
     {
         anim.SetTrigger("Attack 2");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         audioSource.clip = fireball;
         audioSource.Play();
         for (int i = 0; i < 3; i++)

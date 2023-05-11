@@ -32,7 +32,7 @@ public class LinearProjectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hitPlayer = true;
-            other.GetComponent<PlayerScript>().TakeDamage(20);
+            other.GetComponent<PlayerScript>().TakeDamage(5);
             Destroy(gameObject);
         }
         else if (other.CompareTag("Column"))

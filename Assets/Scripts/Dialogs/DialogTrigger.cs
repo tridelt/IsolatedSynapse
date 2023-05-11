@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogTrigger : MonoBehaviour
 {
@@ -11,19 +12,35 @@ public class DialogTrigger : MonoBehaviour
     private bool playerInRange = false;
     private bool dialogActive = false;
     private bool executed = false;
+    PlayerControls PlayerInput; // Input System for the player controls
 
     void Update()
     {
+        // if (playerInRange && !DialogManager.isActive)
+        // {
+        //     if (needInput && Input.GetKeyDown(KeyCode.F))
+        //     {
+        //         StartDialog();
+        //     }
+        // }
+    }
+
+    void Awake()
+    {
+        PlayerInput = new PlayerControls();
+        PlayerInput.Enable();
+        PlayerInput.Player.Interact.performed += StartDialog;
+    }
+
+    public void StartDialog(InputAction.CallbackContext context)
+    {
         if (playerInRange && !DialogManager.isActive)
         {
-            if (needInput && Input.GetKeyDown(KeyCode.F))
-            {
-                StartDialog();
-            }
+            FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
         }
     }
 
-    public void StartDialog()
+    public void StartDialogTwo()
     {
         FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
@@ -38,7 +55,7 @@ public class DialogTrigger : MonoBehaviour
             }
             else if (!executed)
             {
-                StartDialog();
+                StartDialogTwo();
                 executed = true;
             }
         }

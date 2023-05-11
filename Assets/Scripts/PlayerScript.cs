@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject ui_object, GameManager, AudioManager;
+    GameObject ui_object,
+        GameManager,
+        AudioManager;
 
     float current_health;
 
@@ -126,7 +128,9 @@ public class PlayerScript : MonoBehaviour
 
         // For game consistency
         GameManager = GameObject.Find("GameManager");
-        GameManager.GetComponent<GameManager>().LoadPlayerStatus(out current_health, out gadget_availabe);
+        GameManager
+            .GetComponent<GameManager>()
+            .LoadPlayerStatus(out current_health, out gadget_availabe);
         GameManager.GetComponent<GameManager>().LoadSceneStatus();
     }
 
@@ -420,7 +424,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void HealthMax()
+    public void HealthMax()
     {
         current_health = 100;
         ui_object.GetComponent<PlayerUI>().UpdateHealth(current_health);

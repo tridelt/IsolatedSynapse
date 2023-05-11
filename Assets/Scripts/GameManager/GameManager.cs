@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField]
+    Vector3 open_world_spawn_point;
 
-    [SerializeField] Vector3 open_world_spawn_point;
-    [SerializeField] float max_health;
+    [SerializeField]
+    float max_health;
     float current_heatlh;
 
-
     // Bools for the open world and player
-    bool hook_collected, key_obtained, outdoor_puzzle_completed;
+    bool hook_collected,
+        key_obtained,
+        outdoor_puzzle_completed;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,11 @@ public class GameManager : Singleton<GameManager>
     {
         current_heatlh = health;
         hook_collected = hook;
+
+        if (hook_collected)
+        {
+            DisplayDialogHook();
+        }
     }
 
     public void LoadSceneStatus()
@@ -45,7 +53,14 @@ public class GameManager : Singleton<GameManager>
         switch (current_scene)
         {
             case "OpenWorld":
-                SceneController.GetComponent<OpenWorldController>().LoadOpenWorldStatus(open_world_spawn_point, key_obtained, hook_collected, outdoor_puzzle_completed);
+                SceneController
+                    .GetComponent<OpenWorldController>()
+                    .LoadOpenWorldStatus(
+                        open_world_spawn_point,
+                        key_obtained,
+                        hook_collected,
+                        outdoor_puzzle_completed
+                    );
                 break;
             case "House":
                 SceneController.GetComponent<HouseController>().LoadHouseStatus(hook_collected);
@@ -62,6 +77,35 @@ public class GameManager : Singleton<GameManager>
     {
         key_obtained = true;
         GameObject SceneController = GameObject.Find("SceneController");
-        SceneController.GetComponent<OpenWorldController>().UpdateBlockades(key_obtained, hook_collected);
+        SceneController
+            .GetComponent<OpenWorldController>()
+            .UpdateBlockades(key_obtained, hook_collected);
+    }
+
+    void DisplayDialogKey()
+    {
+        Actor[] actors = new Actor[1];
+        Message[] messages = new Message[2];
+        actors[0] = new Actor();
+        actors[0].name = "Selene";
+        messages[0] = new Message();
+        messages[0].actorId = 0;
+        messages[0].message = "Creo que a esta llave la podre utilizar en algun lugar...";
+
+        FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
+    }
+
+    void DisplayDialogHook()
+    {
+        Actor[] actors = new Actor[1];
+        Message[] messages = new Message[2];
+        actors[0] = new Actor();
+        actors[0].name = "Selene";
+        messages[0] = new Message();
+        messages[0].actorId = 0;
+        messages[0].message =
+            "Que interesante esta herramienta, creo que me seria de utilidad mas adelante...";
+
+        FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
 }

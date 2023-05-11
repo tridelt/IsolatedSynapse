@@ -36,7 +36,7 @@ public class DirectionProjectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hitPlayer = true;
-            other.GetComponent<PlayerScript>().TakeDamage(20);
+            other.GetComponent<PlayerScript>().TakeDamage(3);
             Destroy(gameObject);
         }
         else if (other.CompareTag("Column"))
