@@ -333,6 +333,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1190195796}
     m_Modifications:
+    - target: {fileID: 1312278521, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
+      propertyPath: m_text
+      value: Next Message
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312278521, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
+      propertyPath: m_margin.x
+      value: -200.43353
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176427452567461834, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034044951449111117, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.3252585
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034044951449111117, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.33720714
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034044951449111117, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 910.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034044951449111117, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -428
+      objectReference: {fileID: 0}
     - target: {fileID: 7775133089219065889, guid: 08566b57eb91c424eb2958040f14e4b0, type: 3}
       propertyPath: m_Name
       value: UI
